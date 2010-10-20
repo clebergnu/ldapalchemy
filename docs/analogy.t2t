@@ -1,0 +1,153 @@
+LDAPAlchemy
+Analogy to SQLAlchemy explanation
+(c) Cleber Rodrigues
+
+%! Target: html
+%! Encoding: UTF-8
+
+= Notes =
+
+A "type" in SQLAlchemy is somewhat mapped to a "element" in LDAPAlchemy.
+
+A LDAPAlchemy "type" is really a more speficic element, either "type-wise" and
+"metadata-wise". A "type" in LDAPAlchemy would be a AttributeType object, that
+is of a given AttributeTypeElement.
+
+= Defining a Connection or Database =
+
+In SQLAlchemy, the first step is always to setup a connections to the database,
+either excplicitly or implicity. We say (python too) explicity is better then
+implicity, so in SQLAlchemy, you would go on like this:
+
+``` >>> engine = create_engine('sqlite:///tutorial.db')
+
+In LDAPAlchemy, you would go like this:
+
+``` >>> engine = create_engine('ldap://localhost/dc=example,dc=com')
+
+The parameter to LDAPAlchemy is a valid LDAP URL, as defined in RFC1959.
+
+Let's say this crystal clear: the above 'engine' (or 'connection') is bound
+annonymously. To bind with a specific username (binddn) and password, please
+supply them like this:
+
+``` >>> db = create_engine('ldap://localhost/dc=example,dc=com', 
+```                        username='cn=myusername', password='mypassword')
+
+SQLAlchemy embeds username and password in the URL. For now, we choose not to.
+In LDAPAlchemy, you can also use 'binddn' instead of 'username', and 'bindpw' 
+instead of 'password'.
+
+= Metadata =
+
+Having a valid connection to the database (be it a relational database
+or a directory), allows you to load the metadata.
+
+``` >>> metadata = MetaData(engine)
+
+We do not provide separate examples for SQLAlchemy versus LDAPAlchemy, because this
+code is supposed to work just the same for both. 
+
+Additionaly LDAPAlchemy has support for loading the metadata from a LDIF file. To
+do this, you would write the following code:
+
+``` >>> metadata = MetaData(file_like_object)
+
+Or even:
+
+``` >>> metadata = MetaData('path_to_ldif_file')
+
+Remember that this LDIF file is supposed to contain Schema information, and not you
+average data LDIF file.
+
+In the future, we might extend LDAPAlchemy to allow for loading a schema subset
+based on LDIF contaning data.
+
+
+= Creating a Template / Table  =
+
+A table in SQL(Alchemy) is a structure that defines which data can be placed on it.
+LDAP directories do not have tables, but they do enforce a different structure
+trhough ObjectClasses, AttributeTypes and so on.
+
+LDAPAlchemy defines a template, as the object that most resembles a SQL Table.
+
+Also, for compatibility puporses, we allow the programmer to call a Template a Table.
+
+== Creating a Table in SQLAlchemy ==
+
+This is taken from the SQLAlchemy docs:
+
+``` >>> users_table = Table('users', metadata,
+```                         Column('user_id', Integer, primary_key=True),
+``` ...                     Column('user_name', String(40)),
+``` ...                     Column('password', String(10))
+``` ... )
+
+== Creating a Template in LDAPAlchemy ==
+
+In LDAPAlchemy, you would code something like this:
+
+``` >>> '''SYNTAX NOT SUPPORTED FOR NOW'''
+``` >>> users_template = Template('users', metadata,
+```                               ObjectClass('person'),
+```                               ObjectClass('inetOrgPerson'),
+```                               ObjectClass('posixAccount'),
+```                               AttributeType('uid', rdn=True)
+
+
+This would produce a template named 'users'.
+
+As the LDAP standard mandates that every ObjectClass, AttributeType, Syntax, etc
+have a unique OID, a ObjectClass of name 'person' should already exist in the global
+schema. The 'person' ObjectClass should not be a problema, since it's a standard
+LDAP ObjectClass. The same holds true for the other two Object Classes.
+
+The 'uid' attribute, is also a standard one, but we declare it here, to say that
+the distinguished name (DN) for the entry created by using this template will be
+identified by this attribute. This is somewhat analogous to the //primary_key//
+declaration in the SQLAlchemy code.
+
+= Inserting Rows in SQLAlchemy =
+
+When dealing with a table in SQLAlchemy (not using the ORM so far), one can insert
+rows by using the insert() method of a table. Sample code:
+
+``` >>> inserter = users_table.insert()
+``` >>> inserter.execute(uid='mary', userpassword='secure')
+
+
+== Creating Entries in LDAPAlchemy ==
+
+Creating entries is the analogous to inserting rows.
+
+``` >>> inserter = users_template.insert()
+``` >>> inserter.execute(uid='mary', userpassword='secure')
+
+If you still are synced with your LDAP theory, you might be asking yourself:
+
+//Where has my entry been put in the deep DIT (Directory Information Tree)?//
+
+The explanation could have been made unnecessary, if we had provided a parameter
+named 'basedn' in the execute() method of the 'inserter' object. Something like:
+
+``` >>> inserter = users_template.insert()
+``` >>> inserter.execute(basedn='ou=People,dc=example,dc=com',
+```                      uid='mary', userpassword='secure')
+
+But this seem to be too much typing everytime you want to add a entry, right?
+Right! To fix this, you can actually add the basedn directly to your template.
+How? Simple:
+
+
+``` >>> users_template = Template('users', metadata,
+```                               ObjectClass('person'),
+```                               ObjectClass('inetOrgPerson'),
+```                               ObjectClass('posixAccount'),
+```                               AttributeType('uid', rdn=True),
+```                               basedn='ou=People,dc=example,dc=com')
+
+So now, you can now rest assured that your users are being put into the
+proper node in your DIT.
+
+

@@ -1,0 +1,2348 @@
+version: 1
+
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subschema
+cn: schema
+objectClasses: ( 2.5.6.0 NAME 'top' DESC 'Standard LDAP objectclass' ABSTRACT 
+ MUST objectClass X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.20.1 NAME 'subschema' DESC 'Standard LDAP objectclass' SU
+ P top AUXILIARY MAY ( dITStructureRules $ nameForms $ dITContentRules $ objec
+ tClasses $ attributeTypes $ matchingRules $ matchingRuleUse ) X-ORIGIN 'RFC 2
+ 252' )
+objectClasses: ( 2.16.840.1.113719.2.142.6.1.1 NAME 'ldapSubEntry' DESC 'LDAP 
+ Subentry class, version 1' SUP top STRUCTURAL MAY cn X-ORIGIN 'LDAP Subentry 
+ Internet Draft' )
+objectClasses: ( 2.16.840.1.113730.3.2.40 NAME 'directoryServerFeature' DESC '
+ Netscape defined objectclass' SUP top STRUCTURAL MAY ( oid $ cn $ multiLineDe
+ scription ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.41 NAME 'nsslapdPlugin' DESC 'Netscape 
+ defined objectclass' SUP top STRUCTURAL MUST ( cn $ nsslapd-pluginPath $ nssl
+ apd-pluginInitfunc $ nsslapd-pluginType $ nsslapd-pluginId $ nsslapd-pluginVe
+ rsion $ nsslapd-pluginVendor $ nsslapd-pluginDescription $ nsslapd-pluginEnab
+ led ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.44 NAME 'nsIndex' DESC 'Netscape define
+ d objectclass' SUP top STRUCTURAL MUST ( cn $ nsSystemIndex ) MAY ( descripti
+ on $ nsIndexType $ nsMatchingRule ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.109 NAME 'nsBackendInstance' DESC 'Nets
+ cape defined objectclass' SUP top STRUCTURAL MUST cn X-ORIGIN 'Netscape Direc
+ tory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.110 NAME 'nsMappingTree' DESC 'Netscape
+  defined objectclass' SUP top STRUCTURAL MUST cn X-ORIGIN 'Netscape Directory
+  Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.104 NAME 'nsContainer' DESC 'Netscape d
+ efined objectclass' SUP top STRUCTURAL MUST cn X-ORIGIN 'Netscape Directory S
+ erver' )
+objectClasses: ( 2.16.840.1.113730.3.2.108 NAME 'nsDS5Replica' DESC 'Netscape 
+ defined objectclass' SUP top STRUCTURAL MUST ( nsDS5ReplicaRoot $ nsDS5Replic
+ aId ) MAY ( cn $ nsDS5ReplicaType $ nsDS5ReplicaBindDN $ nsState $ nsDS5Repli
+ caName $ nsDS5Flags $ nsDS5Task $ nsDS5ReplicaReferral $ nsDS5ReplicaAutoRefe
+ rral $ nsds5ReplicaPurgeDelay $ nsds5ReplicaTombstonePurgeInterval $ nsds5Rep
+ licaChangeCount $ nsds5ReplicaLegacyConsumer ) X-ORIGIN 'Netscape Directory S
+ erver' )
+objectClasses: ( 2.16.840.1.113730.3.2.113 NAME 'nsTombstone' DESC 'Netscape d
+ efined objectclass' SUP top STRUCTURAL MAY ( nsParentUniqueId $ nscpEntryDN )
+  X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.103 NAME 'nsDS5ReplicationAgreement' DE
+ SC 'Netscape defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsDS5Repli
+ caHost $ nsDS5ReplicaPort $ nsDS5ReplicaTransportInfo $ nsDS5ReplicaBindDN $ 
+ nsDS5ReplicaCredentials $ nsDS5ReplicaBindMethod $ nsDS5ReplicaRoot $ nsDS5Re
+ plicatedAttributeList $ nsDS5ReplicaUpdateSchedule $ nsds5BeginReplicaRefresh
+  $ description $ nsds50ruv $ nsruvReplicaLastModified $ nsds5replicaTimeout $
+  nsds5replicaChangesSentSinceStartup $ nsds5replicaLastUpdateEnd $ nsds5repli
+ caLastUpdateStart $ nsds5replicaLastUpdateStatus $ nsds5replicaUpdateInProgre
+ ss $ nsds5replicaLastInitEnd $ nsds5replicaLastInitStart $ nsds5replicaLastIn
+ itStatus $ nsds5debugreplicatimeout $ nsds5replicaBusyWaitTime $ nsds5replica
+ SessionPauseTime ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.5.6.1 NAME 'alias' DESC 'Standard LDAP objectclass' SUP top
+  ABSTRACT MUST aliasedObjectName X-ORIGIN 'RFC 2256' )
+objectClasses: ( 1.3.6.1.4.1.1466.101.120.111 NAME 'extensibleObject' DESC 'LD
+ APv3 extensible object' SUP top AUXILIARY X-ORIGIN 'RFC 2252' )
+objectClasses: ( 2.5.6.2 NAME 'country' DESC 'Standard LDAP objectclass' SUP t
+ op STRUCTURAL MUST c MAY ( searchGuide $ description ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.3 NAME 'locality' DESC 'Standard LDAP attribute type' S
+ UP top STRUCTURAL MAY ( description $ l $ searchGuide $ seeAlso $ st $ street
+  ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.4 NAME 'organization' DESC 'Standard LDAP objectclass' 
+ SUP top STRUCTURAL MUST o MAY ( businessCategory $ description $ destinationI
+ ndicator $ facsimileTelephoneNumber $ internationaliSDNNumber $ l $ physicalD
+ eliveryOfficeName $ postOfficeBox $ postalAddress $ postalCode $ preferredDel
+ iveryMethod $ registeredAddress $ searchGuide $ seeAlso $ st $ street $ telep
+ honeNumber $ teletexTerminalIdentifier $ telexNumber $ userPassword $ x121Add
+ ress ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.5 NAME 'organizationalUnit' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST ou MAY ( businessCategory $ description $ desti
+ nationIndicator $ facsimileTelephoneNumber $ internationaliSDNNumber $ l $ ph
+ ysicalDeliveryOfficeName $ postOfficeBox $ postalAddress $ postalCode $ prefe
+ rredDeliveryMethod $ registeredAddress $ searchGuide $ seeAlso $ st $ street 
+ $ telephoneNumber $ teletexTerminalIdentifier $ telexNumber $ userPassword $ 
+ x121Address ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.6 NAME 'person' DESC 'Standard LDAP objectclass' SUP to
+ p STRUCTURAL MUST ( sn $ cn ) MAY ( description $ seeAlso $ telephoneNumber $
+  userPassword ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.7 NAME 'organizationalPerson' DESC 'Standard LDAP objec
+ tclass' SUP person STRUCTURAL MAY ( destinationIndicator $ facsimileTelephone
+ Number $ internationaliSDNNumber $ l $ ou $ physicalDeliveryOfficeName $ post
+ OfficeBox $ postalAddress $ postalCode $ preferredDeliveryMethod $ registered
+ Address $ st $ street $ teletexTerminalIdentifier $ telexNumber $ title $ x12
+ 1Address ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.16.840.1.113730.3.2.2 NAME 'inetOrgPerson' DESC 'Internet e
+ xtended organizational person objectclass' SUP organizationalPerson STRUCTURA
+ L MAY ( audio $ businessCategory $ carLicense $ departmentNumber $ displayNam
+ e $ employeeType $ employeeNumber $ givenName $ homePhone $ homePostalAddress
+  $ initials $ jpegPhoto $ labeledUri $ manager $ mobile $ pager $ photo $ pre
+ ferredLanguage $ mail $ o $ roomNumber $ secretary $ uid $ x500UniqueIdentifi
+ er $ userCertificate $ userSMIMECertificate $ userPKCS12 ) X-ORIGIN 'RFC 2798
+ ' )
+objectClasses: ( 2.5.6.8 NAME 'organizationalRole' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST cn MAY ( description $ destinationIndicator $ f
+ acsimileTelephoneNumber $ internationaliSDNNumber $ l $ ou $ physicalDelivery
+ OfficeName $ postOfficeBox $ postalAddress $ postalCode $ preferredDeliveryMe
+ thod $ registeredAddress $ roleOccupant $ seeAlso $ st $ street $ telephoneNu
+ mber $ teletexTerminalIdentifier $ telexNumber $ x121Address ) X-ORIGIN 'RFC 
+ 2256' )
+objectClasses: ( 2.5.6.9 NAME 'groupOfNames' DESC 'Standard LDAP objectclass' 
+ SUP top STRUCTURAL MUST cn MAY ( member $ businessCategory $ description $ o 
+ $ ou $ owner $ seeAlso ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.17 NAME 'groupOfUniqueNames' DESC 'Standard LDAP object
+ class' SUP top STRUCTURAL MUST cn MAY ( uniqueMember $ businessCategory $ des
+ cription $ o $ ou $ owner $ seeAlso ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.16.840.1.113730.3.2.31 NAME 'groupOfCertificates' DESC 'Net
+ scape defined objectclass' SUP top STRUCTURAL MUST cn MAY ( memberCertificate
+ Description $ businessCategory $ description $ o $ ou $ owner $ seeAlso ) X-O
+ RIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.33 NAME 'groupOfURLs' DESC 'Netscape de
+ fined objectclass' SUP top STRUCTURAL MUST cn MAY ( memberURL $ businessCateg
+ ory $ description $ o $ ou $ owner $ seeAlso ) X-ORIGIN 'Netscape Directory S
+ erver' )
+objectClasses: ( 2.5.6.10 NAME 'residentialPerson' DESC 'Standard LDAP objectc
+ lass' SUP person STRUCTURAL MUST l MAY ( businessCategory $ destinationIndica
+ tor $ facsimileTelephoneNumber $ internationaliSDNNumber $ physicalDeliveryOf
+ ficeName $ postOfficeBox $ postalAddress $ postalCode $ preferredDeliveryMeth
+ od $ registeredAddress $ st $ street $ teletexTerminalIdentifier $ telexNumbe
+ r $ x121Address ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.11 NAME 'applicationProcess' DESC 'Standard LDAP object
+ class' SUP top STRUCTURAL MUST cn MAY ( description $ l $ ou $ seeAlso ) X-OR
+ IGIN 'RFC 2256' )
+objectClasses: ( 2.16.840.1.113730.3.2.35 NAME 'LDAPServer' DESC 'Netscape def
+ ined objectclass' SUP top STRUCTURAL MUST cn MAY ( description $ l $ ou $ see
+ Also $ generation $ changeLogMaximumAge $ changeLogMaximumSize ) X-ORIGIN 'Ne
+ tscape Directory Server' )
+objectClasses: ( 2.5.6.12 NAME 'applicationEntity' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST ( presentationAddress $ cn ) MAY ( description 
+ $ l $ o $ ou $ seeAlso $ supportedApplicationContext ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.13 NAME 'dSA' DESC 'Standard LDAP objectclass' SUP appl
+ icationEntity STRUCTURAL MAY knowledgeInformation X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.14 NAME 'device' DESC 'Standard LDAP objectclass' SUP t
+ op STRUCTURAL MUST cn MAY ( description $ l $ o $ ou $ owner $ seeAlso $ seri
+ alNumber ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.15 NAME 'strongAuthenticationUser' DESC 'Standard LDAP 
+ objectclass' SUP top AUXILIARY MUST userCertificate X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.16 NAME 'certificationAuthority' DESC 'Standard LDAP ob
+ jectclass' SUP top AUXILIARY MUST ( authorityRevocationList $ certificateRevo
+ cationList $ cACertificate ) MAY crossCertificatePair X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.16.2 NAME 'certificationAuthority-V2' DESC 'Standard LD
+ AP objectclass' SUP certificationAuthority AUXILIARY MAY deltaRevocationList 
+ X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.18 NAME 'userSecurityInformation' SUP top AUXILIARY MAY
+  supportedAlgorithms X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.19 NAME 'cRLDistributionPoint' SUP top STRUCTURAL MUST 
+ cn MAY ( certificateRevocationList $ authorityRevocationList $ deltaRevocatio
+ nList ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 2.5.6.20 NAME 'dmd' SUP top STRUCTURAL MUST dmdName MAY ( use
+ rPassword $ searchGuide $ seeAlso $ businessCategory $ x121Address $ register
+ edAddress $ destinationIndicator $ preferredDeliveryMethod $ telexNumber $ te
+ letexTerminalIdentifier $ telephoneNumber $ internationaliSDNNumber $ facsimi
+ leTelephoneNumber $ street $ postOfficeBox $ postalCode $ postalAddress $ phy
+ sicalDeliveryOfficeName $ st $ l $ description ) X-ORIGIN 'RFC 2256' )
+objectClasses: ( 1.3.6.1.4.1.250.3.15 NAME 'labeledURIObject' DESC 'object tha
+ t contains the URI attribute type' SUP top AUXILIARY MAY labeledUri X-ORIGIN 
+ 'RFC 2079' )
+objectClasses: ( 1.3.6.1.4.1.250.3.18 NAME 'cacheObject' DESC 'object that con
+ tains the TTL (time to live) attribute type' SUP top STRUCTURAL MAY ttl X-ORI
+ GIN 'LDAP Caching Internet Draft' )
+objectClasses: ( 2.16.840.1.113730.3.2.10 NAME 'netscapeServer' DESC 'Netscape
+  defined objectclass' SUP top STRUCTURAL MUST cn MAY ( description $ serverRo
+ ot $ serverProductName $ serverVersionNumber $ installationTimeStamp $ admini
+ stratorContactInfo $ userPassword $ adminUrl $ serverHostName ) X-ORIGIN 'Net
+ scape Administration Services' )
+objectClasses: ( 2.16.840.1.113730.3.2.7 NAME 'nsLicenseUser' DESC 'Netscape d
+ efined objectclass' SUP top STRUCTURAL MAY ( nsLicensedFor $ nsLicenseStartTi
+ me $ nsLicenseEndTime ) X-ORIGIN 'Netscape Administration Services' )
+objectClasses: ( 2.16.840.1.113730.3.2.1 NAME 'changeLogEntry' DESC 'LDAP chan
+ gelog objectclass' SUP top STRUCTURAL MUST ( targetDn $ changeTime $ changeNu
+ mber $ changeType ) MAY ( changes $ newRdn $ deleteOldRdn $ newSuperior ) X-O
+ RIGIN 'Changelog Internet Draft' )
+objectClasses: ( 2.16.840.1.113730.3.2.6 NAME 'referral' DESC 'LDAP referrals 
+ objectclass' SUP top STRUCTURAL MAY ref X-ORIGIN 'LDAPv3 referrals Internet D
+ raft' )
+objectClasses: ( 2.16.840.1.113730.3.2.12 NAME 'passwordObject' DESC 'Netscape
+  defined password policy objectclass' SUP top STRUCTURAL MAY ( pwdpolicysuben
+ try $ passwordExpirationTime $ passwordExpWarned $ passwordRetryCount $ retry
+ CountResetTime $ accountUnlockTime $ passwordHistory $ passwordAllowChangeTim
+ e $ passwordGraceUserTime ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.13 NAME 'passwordPolicy' DESC 'Netscape
+  defined password policy objectclass' SUP top STRUCTURAL MAY ( passwordMaxAge
+  $ passwordExp $ passwordMinLength $ passwordKeepHistory $ passwordInHistory 
+ $ passwordChange $ passwordWarning $ passwordLockout $ passwordMaxFailure $ p
+ asswordResetDuration $ passwordUnlock $ passwordLockoutDuration $ passwordChe
+ ckSyntax $ passwordMustChange $ passwordStorageScheme $ passwordMinAge $ pass
+ wordResetFailureCount $ passwordGraceLimit $ passwordMinDigits $ passwordMinA
+ lphas $ passwordMinUppers $ passwordMinLowers $ passwordMinSpecials $ passwor
+ dMin8bit $ passwordMaxRepeats $ passwordMinCategories $ passwordMinTokenLengt
+ h ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.30 NAME 'glue' DESC 'Netscape defined o
+ bjectclass' SUP top STRUCTURAL X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.32 NAME 'netscapeMachineData' DESC 'Net
+ scape defined objectclass' SUP top STRUCTURAL X-ORIGIN 'Netscape Directory Se
+ rver' )
+objectClasses: ( 2.16.840.1.113730.3.2.38 NAME 'vlvSearch' DESC 'Netscape defi
+ ned objectclass' SUP top STRUCTURAL MUST ( cn $ vlvBase $ vlvScope $ vlvFilte
+ r ) MAY multiLineDescription X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.39 NAME 'nsslapdConfig' DESC 'Netscape 
+ defined objectclass' SUP top STRUCTURAL MAY cn X-ORIGIN 'Netscape Directory S
+ erver' )
+objectClasses: ( 2.16.840.1.113730.3.2.42 NAME 'vlvIndex' DESC 'Netscape defin
+ ed objectclass' SUP top STRUCTURAL MUST ( cn $ vlvSort ) MAY ( vlvEnabled $ v
+ lvUses ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.43 NAME 'nsSNMP' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST ( cn $ nsSNMPEnabled ) MAY ( nsSNMPOrga
+ nization $ nsSNMPLocation $ nsSNMPContact $ nsSNMPDescription $ nsSNMPName $ 
+ nsSNMPMasterHost $ nsSNMPMasterPort ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.84 NAME 'cosDefinition' DESC 'Netscape 
+ defined objectclass' SUP top STRUCTURAL MAY ( costargettree $ costemplatedn $
+  cosspecifier $ cosAttribute $ aci $ cn $ uid ) X-ORIGIN 'Netscape Directory 
+ Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.93 NAME 'nsRoleDefinition' DESC 'Netsca
+ pe defined objectclass' SUP ldapSubEntry STRUCTURAL MAY description X-ORIGIN 
+ 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.94 NAME 'nsSimpleRoleDefinition' DESC '
+ Netscape defined objectclass' SUP nsRoleDefinition STRUCTURAL X-ORIGIN 'Netsc
+ ape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.95 NAME 'nsComplexRoleDefinition' DESC 
+ 'Netscape defined objectclass' SUP nsRoleDefinition STRUCTURAL X-ORIGIN 'Nets
+ cape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.96 NAME 'nsManagedRoleDefinition' DESC 
+ 'Netscape defined objectclass' SUP nsSimpleRoleDefinition STRUCTURAL X-ORIGIN
+  'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.97 NAME 'nsFilteredRoleDefinition' DESC
+  'Netscape defined objectclass' SUP nsComplexRoleDefinition STRUCTURAL MUST n
+ sRoleFilter X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.98 NAME 'nsNestedRoleDefinition' DESC '
+ Netscape defined objectclass' SUP nsComplexRoleDefinition STRUCTURAL MUST nsR
+ oleDN X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.99 NAME 'cosSuperDefinition' DESC 'Nets
+ cape defined objectclass' SUP ldapSubEntry STRUCTURAL MUST cosAttribute MAY d
+ escription X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.100 NAME 'cosClassicDefinition' DESC 'N
+ etscape defined objectclass' SUP cosSuperDefinition STRUCTURAL MAY ( costempl
+ atedn $ cosspecifier ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.101 NAME 'cosPointerDefinition' DESC 'N
+ etscape defined objectclass' SUP cosSuperDefinition STRUCTURAL MAY costemplat
+ edn X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.102 NAME 'cosIndirectDefinition' DESC '
+ Netscape defined objectclass' SUP cosSuperDefinition STRUCTURAL MAY cosIndire
+ ctSpecifier X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.503 NAME 'nsDSWindowsReplicationAgreeme
+ nt' DESC 'Netscape defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsDS
+ 5ReplicaHost $ nsDS5ReplicaPort $ nsDS5ReplicaTransportInfo $ nsDS5ReplicaBin
+ dDN $ nsDS5ReplicaCredentials $ nsDS5ReplicaBindMethod $ nsDS5ReplicaRoot $ n
+ sDS5ReplicatedAttributeList $ nsDS5ReplicaUpdateSchedule $ nsds5BeginReplicaR
+ efresh $ description $ nsds50ruv $ nsruvReplicaLastModified $ nsds5replicaTim
+ eout $ nsds5replicaChangesSentSinceStartup $ nsds5replicaLastUpdateEnd $ nsds
+ 5replicaLastUpdateStart $ nsds5replicaLastUpdateStatus $ nsds5replicaUpdateIn
+ Progress $ nsds5replicaLastInitEnd $ nsds5replicaLastInitStart $ nsds5replica
+ LastInitStatus $ nsds5debugreplicatimeout $ nsds5replicaBusyWaitTime $ nsds5r
+ eplicaSessionPauseTime $ nsds7WindowsReplicaSubtree $ nsds7DirectoryReplicaSu
+ btree $ nsds7NewWinUserSyncEnabled $ nsds7NewWinGroupSyncEnabled $ nsds7Windo
+ wsDomain $ nsds7DirsyncCookie ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.128 NAME 'costemplate' DESC 'Netscape d
+ efined objectclass' SUP top STRUCTURAL MAY ( cn $ cosPriority ) X-ORIGIN 'Net
+ scape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.304 NAME 'nsView' DESC 'Netscape define
+ d objectclass' SUP top AUXILIARY MAY ( nsViewFilter $ description ) X-ORIGIN 
+ 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.316 NAME 'nsAttributeEncryption' DESC '
+ Netscape defined objectclass' SUP top STRUCTURAL MUST ( cn $ nsEncryptionAlgo
+ rithm ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.317 NAME 'nsSaslMapping' DESC 'Netscape
+  defined objectclass' SUP top STRUCTURAL MUST ( cn $ nsSaslMapRegexString $ n
+ sSaslMapBaseDNTemplate $ nsSaslMapFilterTemplate ) X-ORIGIN 'Netscape Directo
+ ry Server' )
+objectClasses: ( 1.3.6.1.4.1.1466.344 NAME 'dcObject' DESC 'Standard LDAP obje
+ ctclass' SUP top AUXILIARY MUST dc X-ORIGIN 'RFC 2247' )
+objectClasses: ( 0.9.2342.19200300.100.4.13 NAME 'domain' DESC 'Standard LDAP 
+ objectclass' SUP top STRUCTURAL MUST dc MAY ( associatedName $ businessCatego
+ ry $ description $ destinationIndicator $ facsimileTelephoneNumber $ internat
+ ionaliSDNNumber $ l $ o $ physicalDeliveryOfficeName $ postOfficeBox $ postal
+ Address $ postalCode $ preferredDeliveryMethod $ registeredAddress $ searchGu
+ ide $ seeAlso $ st $ street $ telephoneNumber $ teletexTerminalIdentifier $ t
+ elexNumber $ userPassword $ x121Address ) X-ORIGIN 'RFC 2247' )
+objectClasses: ( 0.9.2342.19200300.100.4.14 NAME 'RFC822localPart' DESC 'Pilot
+  objectclass' SUP domain STRUCTURAL MAY ( cn $ sn ) X-ORIGIN 'Internet direct
+ ory pilot' )
+objectClasses: ( 0.9.2342.19200300.100.4.15 NAME 'DNSDomain' DESC 'Pilot objec
+ tclass' SUP domain STRUCTURAL MAY dNSRecord X-ORIGIN 'Internet directory pilo
+ t' )
+objectClasses: ( 2.16.840.1.113730.3.2.300 NAME 'nsAIMpresence' DESC 'Netscape
+  defined objectclass' SUP top AUXILIARY MAY ( nsAIMid $ nsAIMStatusGraphic $ 
+ nsAIMStatusText ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.301 NAME 'nsICQpresence' DESC 'Netscape
+  defined objectclass' SUP top AUXILIARY MAY ( nsICQid $ nsICQStatusGraphic $ 
+ nsICQStatusText ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.302 NAME 'nsYIMpresence' DESC 'Netscape
+  defined objectclass' SUP top AUXILIARY MAY ( nsYIMid $ nsYIMStatusGraphic $ 
+ nsYIMStatusText ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.303 NAME 'nsMSNpresence' DESC 'Netscape
+  defined objectclass' SUP top AUXILIARY MAY nsMSNid X-ORIGIN 'Netscape Direct
+ ory Server' )
+objectClasses: ( 1.3.6.1.1.1.2.0 NAME 'posixAccount' DESC 'Standard LDAP objec
+ tclass' SUP top AUXILIARY MUST ( cn $ uid $ uidNumber $ gidNumber $ homeDirec
+ tory ) MAY ( userPassword $ loginShell $ gecos $ description ) X-ORIGIN 'RFC 
+ 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.1 NAME 'shadowAccount' DESC 'Standard LDAP obje
+ ctclass' SUP top AUXILIARY MUST uid MAY ( userPassword $ shadowLastChange $ s
+ hadowMin $ shadowMax $ shadowWarning $ shadowInactive $ shadowExpire $ shadow
+ Flag $ description ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.2 NAME 'posixGroup' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST ( cn $ gidNumber ) MAY ( userPassword $ memberU
+ id $ description ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.3 NAME 'ipService' DESC 'Standard LDAP objectcl
+ ass' SUP top STRUCTURAL MUST ( cn $ ipServicePort $ ipServiceProtocol ) MAY d
+ escription X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.4 NAME 'ipProtocol' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST ( cn $ ipProtocolNumber ) MAY description X-ORI
+ GIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.5 NAME 'oncRpc' DESC 'Standard LDAP objectclass
+ ' SUP top STRUCTURAL MUST ( cn $ oncRpcNumber ) MAY description X-ORIGIN 'RFC
+  2307' )
+objectClasses: ( 1.3.6.1.1.1.2.6 NAME 'ipHost' DESC 'Standard LDAP objectclass
+ ' SUP top AUXILIARY MUST ( ipHostNumber $ cn ) MAY ( manager $ description $ 
+ l $ o $ ou $ owner $ seeAlso $ serialNumber ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.7 NAME 'ipNetwork' DESC 'Standard LDAP objectcl
+ ass' SUP top STRUCTURAL MUST ( ipNetworkNumber $ cn ) MAY ( ipNetmaskNumber $
+  manager $ l $ description ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.8 NAME 'nisNetgroup' DESC 'Standard LDAP object
+ class' SUP top STRUCTURAL MUST cn MAY ( nisNetgroupTriple $ memberNisNetgroup
+  $ description ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.10 NAME 'nisObject' DESC 'Standard LDAP objectc
+ lass' SUP top STRUCTURAL MUST ( cn $ nisMapEntry $ nisMapName ) MAY descripti
+ on X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.11 NAME 'ieee802Device' DESC 'Standard LDAP obj
+ ectclass' SUP top AUXILIARY MUST cn MAY ( macAddress $ description $ l $ o $ 
+ ou $ owner $ seeAlso $ serialNumber ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.12 NAME 'bootableDevice' DESC 'Standard LDAP ob
+ jectclass' SUP top AUXILIARY MUST cn MAY ( bootFile $ bootParameter $ descrip
+ tion $ l $ o $ ou $ owner $ seeAlso $ serialNumber ) X-ORIGIN 'RFC 2307' )
+objectClasses: ( 1.3.6.1.1.1.2.13 NAME 'nisMap' DESC 'Standard LDAP objectclas
+ s' SUP top STRUCTURAL MUST nisMapName MAY description X-ORIGIN 'RFC 2307' )
+objectClasses: ( 2.16.840.1.113730.3.2.129 NAME 'inetDomain' DESC 'Auxiliary c
+ lass for virtual domain nodes' SUP top AUXILIARY MAY ( inetDomainBaseDN $ ine
+ tDomainStatus ) X-ORIGIN 'Netscape subscriber interoperability' )
+objectClasses: ( 2.16.840.1.113730.3.2.130 NAME 'inetUser' DESC 'Auxiliary cla
+ ss which must be present in an entry for delivery of subscriber services' SUP
+  top AUXILIARY MAY ( uid $ inetUserStatus $ inetUserHttpURL $ userPassword $ 
+ memberOf ) X-ORIGIN 'Netscape subscriber interoperability' )
+objectClasses: ( 1.3.6.1.4.1.1466.101.120.141 NAME 'NetscapeLinkedOrganization
+ ' AUXILIARY MAY parentOrganization X-ORIGIN 'Netscape' )
+objectClasses: ( 1.3.6.1.4.1.1466.101.120.142 NAME 'NetscapePreferences' AUXIL
+ IARY MAY ( preferredLanguage $ preferredLocale $ preferredTimeZone ) X-ORIGIN
+  'Netscape' )
+objectClasses: ( 2.16.840.1.113730.3.2.134 NAME 'inetSubscriber' SUP top AUXIL
+ IARY MAY ( inetSubscriberAccountId $ inetSubscriberChallenge $ inetSubscriber
+ Response ) X-ORIGIN 'Netscape subscriber interoperability' )
+objectClasses: ( 2.16.840.1.113730.3.2.112 NAME 'inetAdmin' DESC 'Marker for a
+ n administrative group or user' SUP top AUXILIARY MAY ( aci $ memberOf $ admi
+ nRole ) X-ORIGIN 'Netscape Delegated Administrator' )
+objectClasses: ( 1.3.6.1.4.1.42.2.27.4.2.1 NAME 'javaContainer' DESC 'Containe
+ r for a Java object' SUP top STRUCTURAL MUST cn X-ORIGIN 'RFC 2713' )
+objectClasses: ( 1.3.6.1.4.1.42.2.27.4.2.4 NAME 'javaObject' DESC 'Java object
+  representation' SUP top ABSTRACT MUST javaClassName MAY ( javaClassNames $ j
+ avaCodebase $ javaDoc $ description ) X-ORIGIN 'RFC 2713' )
+objectClasses: ( 1.3.6.1.4.1.42.2.27.4.2.5 NAME 'javaSerializedObject' DESC 'J
+ ava serialized object' SUP javaObject AUXILIARY MUST javaSerializedData X-ORI
+ GIN 'RFC 2713' )
+objectClasses: ( 1.3.6.1.4.1.42.2.27.4.2.7 NAME 'javaNamingReference' DESC 'JN
+ DI reference' SUP javaObject AUXILIARY MAY ( javaReferenceAddress $ javaFacto
+ ry ) X-ORIGIN 'RFC 2713' )
+objectClasses: ( 1.3.6.1.4.1.42.2.27.4.2.8 NAME 'javaMarshalledObject' DESC 'J
+ ava marshalled object' SUP javaObject AUXILIARY MUST javaSerializedData X-ORI
+ GIN 'RFC 2713' )
+objectClasses: ( 0.9.2342.19200300.100.4.3 NAME 'pilotObject' DESC 'Standard L
+ DAP objectclass' SUP top STRUCTURAL MAY ( audio $ ditRedirect $ info $ jpegPh
+ oto $ lastModifiedBy $ lastModifiedTime $ manager $ photo $ uniqueIdentifier 
+ ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.4 NAME 'newPilotPerson' DESC 'Pilot o
+ bjectclass' SUP person STRUCTURAL MAY ( businessCategory $ drink $ homePhone 
+ $ homePostalAddress $ janetMailbox $ mail $ mailPreferenceOption $ mobile $ o
+ rganizationalStatus $ otherMailbox $ pager $ personalSignature $ personalTitl
+ e $ preferredDeliveryMethod $ roomNumber $ secretary $ textEncodedORAddress $
+  uid $ userClass ) X-ORIGIN 'Internet White Pages Pilot' )
+objectClasses: ( 0.9.2342.19200300.100.4.5 NAME 'account' DESC 'Standard LDAP 
+ objectclass' SUP top STRUCTURAL MUST uid MAY ( description $ host $ l $ o $ o
+ u $ seeAlso ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.6 NAME 'document' DESC 'Standard LDAP
+  objectclass' SUP pilotObject STRUCTURAL MUST documentIdentifier MAY ( abstra
+ ct $ authorCn $ authorSn $ cn $ description $ documentAuthor $ documentLocati
+ on $ documentPublisher $ documentStore $ documentTitle $ documentVersion $ ke
+ yWords $ l $ o $ obsoletedByDocument $ obsoletesDocument $ ou $ seeAlso $ sub
+ ject $ updatedByDocument $ updatesDocument ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.7 NAME 'room' DESC 'Standard LDAP obj
+ ectclass' SUP top STRUCTURAL MUST cn MAY ( description $ roomNumber $ seeAlso
+  $ telephoneNumber ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.9 NAME 'documentSeries' DESC 'Standar
+ d LDAP objectclass' SUP top STRUCTURAL MUST cn MAY ( description $ l $ o $ ou
+  $ seeAlso $ telephoneNumber ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.17 NAME 'domainRelatedObject' DESC 'S
+ tandard LDAP objectclass' SUP top STRUCTURAL MUST associatedDomain X-ORIGIN '
+ RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.18 NAME 'friendlyCountry' DESC 'Stand
+ ard LDAP objectclass' SUP country STRUCTURAL MUST co X-ORIGIN 'RFC 1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.19 NAME 'simpleSecurityObject' DESC '
+ Standard LDAP objectclass' SUP top STRUCTURAL MUST userPassword X-ORIGIN 'RFC
+  1274' )
+objectClasses: ( 0.9.2342.19200300.100.4.20 NAME 'pilotOrganization' DESC 'Sta
+ ndard LDAP objectclass' SUP top STRUCTURAL MUST ( ou $ o ) MAY ( buildingName
+  $ businessCategory $ description $ destinationIndicator $ facsimileTelephone
+ Number $ internationaliSDNNumber $ l $ physicalDeliveryOfficeName $ postOffic
+ eBox $ postalAddress $ postalCode $ preferredDeliveryMethod $ registeredAddre
+ ss $ searchGuide $ seeAlso $ st $ street $ telephoneNumber $ teletexTerminalI
+ dentifier $ telexNumber $ userPassword $ x121Address ) X-ORIGIN 'RFC 1274' )
+objectClasses: ( nsAdminDomain-oid NAME 'nsAdminDomain' DESC 'Netscape defined
+  objectclass' SUP organizationalUnit STRUCTURAL MAY nsAdminDomainName X-ORIGI
+ N 'Netscape' )
+objectClasses: ( nsHost-oid NAME 'nsHost' DESC 'Netscape defined objectclass' 
+ SUP top STRUCTURAL MUST cn MAY ( serverHostName $ description $ l $ nsHostLoc
+ ation $ nsHardwarePlatform $ nsOsVersion ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsAdminGroup-oid NAME 'nsAdminGroup' DESC 'Netscape defined o
+ bjectclass' SUP top STRUCTURAL MUST cn MAY ( nsAdminGroupName $ description $
+  nsConfigRoot $ nsAdminSIEDN ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsApplication-oid NAME 'nsApplication' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST cn MAY ( nsVendor $ description $ nsPro
+ ductName $ nsNickName $ nsProductVersion $ nsBuildNumber $ nsRevisionNumber $
+  nsSerialNumber $ nsInstalledLocation $ installationTimeStamp $ nsExpirationD
+ ate $ nsBuildSecurity $ nsLdapSchemaVersion $ nsServerMigrationClassname $ ns
+ ServerCreationClassname ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsEncryptionConfig-oid NAME 'nsEncryptionConfig' DESC 'Netsca
+ pe defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsCertfile $ nsKeyfi
+ le $ nsSSL2 $ nsSSL3 $ nsSSLSessionTimeout $ nsSSL3SessionTimeout $ nsSSLClie
+ ntAuth $ nsSSL2Ciphers $ nsSSL3Ciphers $ nsSSLSupportedCiphers ) X-ORIGIN 'Ne
+ tscape' )
+objectClasses: ( nsEncryptionModule-oid NAME 'nsEncryptionModule' DESC 'Netsca
+ pe defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsSSLToken $ nsSSLPe
+ rsonalitySSL $ nsSSLActivation ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsResourceRef-oid NAME 'nsResourceRef' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST cn MAY seeAlso X-ORIGIN 'Netscape' )
+objectClasses: ( nsTask-oid NAME 'nsTask' DESC 'Netscape defined objectclass' 
+ SUP top STRUCTURAL MUST cn MAY ( nsTaskLabel $ nsHelpRef $ nsExecRef $ nsLogS
+ uppress ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsTaskGroup-oid NAME 'nsTaskGroup' DESC 'Netscape defined obj
+ ectclass' SUP top STRUCTURAL MUST cn MAY nsTaskLabel X-ORIGIN 'Netscape' )
+objectClasses: ( nsAdminObject-oid NAME 'nsAdminObject' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST cn MAY ( nsJarfilename $ nsClassname ) 
+ X-ORIGIN 'Netscape' )
+objectClasses: ( nsConfig-oid NAME 'nsConfig' DESC 'Netscape defined objectcla
+ ss' SUP top STRUCTURAL MUST cn MAY ( description $ nsServerPort $ nsServerAdd
+ ress $ nsSuiteSpotUser $ nsErrorLog $ nsPidLog $ nsAccessLog $ nsDefaultAccep
+ tLanguage $ nsServerSecurity ) X-ORIGIN 'Netscape' )
+objectClasses: ( nsDirectoryInfo-oid NAME 'nsDirectoryInfo' DESC 'Netscape def
+ ined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsBindDN $ nsBindPassword 
+ $ nsDirectoryURL $ nsDirectoryFailoverList $ nsDirectoryInfoRef ) X-ORIGIN 'N
+ etscape' )
+objectClasses: ( nsAdminServer-oid NAME 'nsAdminServer' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST ( cn $ nsServerID ) MAY description X-O
+ RIGIN 'Netscape Administration Services' )
+objectClasses: ( nsAdminConfig-oid NAME 'nsAdminConfig' DESC 'Netscape defined
+  objectclass' SUP nsConfig STRUCTURAL MAY ( nsAdminCgiWaitPid $ nsAdminUsers 
+ $ nsAdminAccessHosts $ nsAdminAccessAddresses $ nsAdminOneACLDir $ nsAdminEna
+ bleDSGW $ nsAdminEnableEnduser $ nsAdminCacheLifetime ) X-ORIGIN 'Netscape Ad
+ ministration Services' )
+objectClasses: ( nsAdminResourceEditorExtension-oid NAME 'nsAdminResourceEdito
+ rExtension' DESC 'Netscape defined objectclass' SUP nsAdminObject STRUCTURAL 
+ MAY ( nsAdminAccountInfo $ nsDeleteclassname ) X-ORIGIN 'Netscape Administrat
+ ion Services' )
+objectClasses: ( nsAdminGlobalParameters-oid NAME 'nsAdminGlobalParameters' DE
+ SC 'Netscape defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsAdminEnd
+ UserHTMLIndex $ nsNickName ) X-ORIGIN 'Netscape Administration Services' )
+objectClasses: ( nsGlobalParameters-oid NAME 'nsGlobalParameters' DESC 'Netsca
+ pe defined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsUniqueAttribute $ 
+ nsUserIDFormat $ nsUserRDNComponent $ nsGroupRDNComponent $ nsWellKnownJarfil
+ es $ nsNYR ) X-ORIGIN 'Netscape Administration Services' )
+objectClasses: ( nsDefaultObjectClasses-oid NAME 'nsDefaultObjectClasses' DESC
+  'Netscape defined objectclass' SUP top STRUCTURAL MUST cn MAY nsDefaultObjec
+ tClass X-ORIGIN 'Netscape Administration Services' )
+objectClasses: ( nsAdminConsoleUser-oid NAME 'nsAdminConsoleUser' DESC 'Netsca
+ pe defined objectclass' SUP top STRUCTURAL MUST cn MAY nsPreference X-ORIGIN 
+ 'Netscape Administration Services' )
+objectClasses: ( nsCustomView-oid NAME 'nsCustomView' DESC 'Netscape defined o
+ bjectclass' SUP nsAdminObject STRUCTURAL MAY nsDisplayName X-ORIGIN 'Netscape
+  Administration Services' )
+objectClasses: ( nsTopologyCustomView-oid NAME 'nsTopologyCustomView' DESC 'Ne
+ tscape defined objectclass' SUP nsCustomView STRUCTURAL MAY nsViewConfigurati
+ on X-ORIGIN 'Netscape Administration Services' )
+objectClasses: ( nsTopologyPlugin-oid NAME 'nsTopologyPlugin' DESC 'Netscape d
+ efined objectclass' SUP nsAdminObject STRUCTURAL X-ORIGIN 'Netscape Administr
+ ation Services' )
+objectClasses: ( 2.16.840.1.113730.3.2.18 NAME 'netscapeCertificateServer' DES
+ C 'Netscape defined objectclass' SUP top STRUCTURAL X-ORIGIN 'Netscape Certif
+ icate Management System' )
+objectClasses: ( nsCertificateServer-oid NAME 'nsCertificateServer' DESC 'Nets
+ cape defined objectclass' SUP top STRUCTURAL MUST nsServerID MAY ( serverHost
+ Name $ nsServerPort $ nsCertConfig ) X-ORIGIN 'Netscape Certificate Managemen
+ t System' )
+objectClasses: ( 2.16.840.1.113730.3.2.23 NAME 'netscapeDirectoryServer' DESC 
+ 'Netscape defined objectclass' SUP top STRUCTURAL X-ORIGIN 'Netscape Director
+ y Server' )
+objectClasses: ( nsDirectoryServer-oid NAME 'nsDirectoryServer' DESC 'Netscape
+  defined objectclass' SUP top STRUCTURAL MUST nsServerID MAY ( serverHostName
+  $ nsServerPort $ nsSecureServerPort $ nsBindPassword $ nsBindDN $ nsBaseDN )
+  X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.8 NAME 'ntUser' DESC 'Netscape defined 
+ objectclass' SUP top STRUCTURAL MUST ntUserDomainId MAY ( description $ l $ o
+ u $ seeAlso $ ntUserPriv $ ntUserHomeDir $ ntUserComment $ ntUserFlags $ ntUs
+ erScriptPath $ ntUserAuthFlags $ ntUserUsrComment $ ntUserParms $ ntUserWorks
+ tations $ ntUserLastLogon $ ntUserLastLogoff $ ntUserAcctExpires $ ntUserMaxS
+ torage $ ntUserUnitsPerWeek $ ntUserLogonHours $ ntUserBadPwCount $ ntUserNum
+ Logons $ ntUserLogonServer $ ntUserCountryCode $ ntUserCodePage $ ntUserUniqu
+ eId $ ntUserPrimaryGroupId $ ntUserProfile $ ntUserHomeDirDrive $ ntUserPassw
+ ordExpired $ ntUserCreateNewAccount $ ntUserDeleteAccount $ ntUniqueId ) X-OR
+ IGIN 'Netscape NT Synchronization' )
+objectClasses: ( 2.16.840.1.113730.3.2.9 NAME 'ntGroup' DESC 'Netscape defined
+  objectclass' SUP top STRUCTURAL MUST ntUserDomainId MAY ( description $ l $ 
+ ou $ seeAlso $ ntGroupId $ ntGroupAttributes $ ntGroupCreateNewGroup $ ntGrou
+ pDeleteGroup $ ntGroupType $ ntUniqueId ) X-ORIGIN 'Netscape NT Synchronizati
+ on' )
+objectClasses: ( 2.16.840.1.113730.3.2.82 NAME 'nsChangelog4Config' DESC 'Nets
+ cape defined objectclass' SUP top STRUCTURAL MAY cn X-ORIGIN 'Netscape Direct
+ ory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.114 NAME 'nsConsumer4Config' DESC 'Nets
+ cape defined objectclass' SUP top STRUCTURAL MAY cn X-ORIGIN 'Netscape Direct
+ ory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.36 NAME 'LDAPReplica' DESC 'Netscape de
+ fined objectclass' SUP top STRUCTURAL MUST cn MAY ( description $ l $ ou $ se
+ eAlso $ replicaRoot $ replicaHost $ replicaPort $ replicaBindDn $ replicaCred
+ entials $ replicaBindMethod $ replicaUseSSL $ replicaUpdateSchedule $ replica
+ UpdateReplayed $ replicaUpdateFailedAt $ replicaBeginOrc $ replicaNickName $ 
+ replicaEntryFilter $ replicatedattributelist $ replicaCFUpdated $ replicaAban
+ donedChanges $ replicaLastRelevantChange ) X-ORIGIN 'Netscape Directory Serve
+ r' )
+objectClasses: ( 2.16.840.1.113730.3.2.11 NAME 'cirReplicaSource' DESC 'Netsca
+ pe defined objectclass' SUP top STRUCTURAL MUST cn MAY ( cirReplicaRoot $ cir
+ Host $ cirPort $ cirBindDn $ cirUsePersistentSearch $ cirUseSsl $ cirBindCred
+ entials $ cirLastUpdateApplied $ cirUpdateSchedule $ cirSyncInterval $ cirUpd
+ ateFailedat $ cirBeginORC $ replicaNickName $ replicaEntryFilter $ replicated
+ attributelist ) X-ORIGIN 'Netscape Directory Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.45 NAME 'nsValueItem' DESC 'Netscape de
+ fined objectclass' SUP top STRUCTURAL MUST cn MAY ( nsValueCIS $ nsValueCES $
+  nsValueTel $ nsValueInt $ nsValueBin $ nsValueDN $ nsValueType $ nsValueSynt
+ ax $ nsValueDescription $ nsValueHelpURL $ nsValueFlags $ nsValueDefault ) X-
+ ORIGIN 'Netscape servers - value item' )
+objectClasses: ( 2.16.840.1.113730.3.2.29 NAME 'netscapeWebServer' DESC 'Netsc
+ ape defined objectclass' SUP top STRUCTURAL MUST ( cn $ nsServerID ) MAY ( de
+ scription $ nsServerPort ) X-ORIGIN 'Netscape Web Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.154 NAME 'netscapeReversiblePasswordObj
+ ect' DESC 'object that contains an netscapeReversiblePassword' AUXILIARY MAY 
+ netscapeReversiblePassword X-ORIGIN 'Netscape Web Server' )
+objectClasses: ( 2.16.840.1.113730.3.2.318 NAME 'pamConfig' DESC 'PAM plugin c
+ onfiguration' SUP top AUXILIARY MAY ( pamMissingSuffix $ pamExcludeSuffix $ p
+ amIncludeSuffix $ pamIDAttr $ pamIDMapMethod $ pamFallback $ pamSecure $ pamS
+ ervice ) X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.582 NAME 'nsDS5ReplicaCredentials' DES
+ C 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGL
+ E-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.26 NAME 'dNSRecord' DESC 'Pilot attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Internet directory
+  pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.532 NAME 'ntUserCountryCode' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VAL
+ UE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.34 NAME 'ref' DESC 'LDAP referrals att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'LDAPv3 referrals 
+ Internet Draft' )
+attributeTypes: ( 2.16.840.1.113730.3.1.204 NAME 'replicaNickName' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2021 NAME 'nsICQStatusText' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Directory 
+ Server' )
+attributeTypes: ( 2.5.4.51 NAME 'houseIdentifier' DESC 'Standard LDAP attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( nsUserRDNComponent-oid NAME 'nsUserRDNComponent' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Administration Services' )
+attributeTypes: ( 0.9.2342.19200300.100.1.3 NAME ( 'mail' 'rfc822mailbox' ) DE
+ SC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIG
+ IN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.607 NAME 'nsDS5Flags' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( nsTaskLabel-oid NAME 'nsTaskLabel' DESC 'Netscape defined at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2068 NAME 'pamExcludeSuffix' DESC 'Suf
+ fixes to exclude from PAM authentication' SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 2 X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( nsBindDN-oid NAME 'nsBindDN' DESC 'Netscape defined attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.5.4.18 NAME 'postOfficeBox' DESC 'Standard LDAP attribute 
+ type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.4.1.250.1.2 NAME 'multiLineDescription' DESC 'Pilot 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Internet White
+  Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.102 NAME ( 'passwordChange' 'pwdAllowU
+ serChange' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.
+ 3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.527 NAME 'ntUserLastLogoff' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 1.3.6.1.1.1.1.10 NAME 'shadowExpire' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 
+ 2307' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.6 NAME 'javaClassName' DESC 'Fully q
+ ualified name of distinguished Java class or interface' EQUALITY caseExactMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.240 NAME 'replicatedattributelist' DES
+ C 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-OR
+ IGIN 'Netscape Directory Server' )
+attributeTypes: ( nsRevisionNumber-oid NAME 'nsRevisionNumber' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe' )
+attributeTypes: ( nsHelpRef-oid NAME 'nsHelpRef' DESC 'Netscape defined attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.43 NAME 'ntUserDeleteAccount' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VA
+ LUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.217 NAME 'replicaCFUpdated' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.6 NAME 'targetDn' DESC 'Changelog attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Changelog Internet
+  Draft' )
+attributeTypes: ( 2.5.4.25 NAME 'internationaliSDNNumber' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.998 NAME ( 'passwordGraceUserTime' 'pw
+ dGraceUserTime' ) DESC 'Netscape defined password policy attribute type' SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE directoryOperation X-ORIG
+ IN 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.5 NAME 'shadowLastChange' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'R
+ FC 2307' )
+attributeTypes: ( 0.9.2342.19200300.100.1.11 NAME 'documentIdentifier' DESC 'S
+ tandard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'R
+ FC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.65 NAME 'ntUserLogonServer' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( nsExpirationDate-oid NAME 'nsExpirationDate' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe' )
+attributeTypes: ( nsVendor-oid NAME 'nsVendor' DESC 'Netscape defined attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.87 NAME 'cirUpdateSchedule' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.5.4.32 NAME 'owner' DESC 'Standard LDAP attribute type' SU
+ P distinguishedName SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2256' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.2019 NAME 'nsYIMStatusText' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Directory 
+ Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.253 NAME 'nsValueSyntax' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape servers - value item' )
+attributeTypes: ( nsLdapSchemaVersion-oid NAME 'nsLdapSchemaVersion' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape' )
+attributeTypes: ( 2.5.4.2 NAME 'knowledgeInformation' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.5.4.10 NAME ( 'o' 'organizationname' ) DESC 'Standard LDAP
+  attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 
+ 2256' )
+attributeTypes: ( nsAdminAccessAddresses-oid NAME 'nsAdminAccessAddresses' DES
+ C 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-OR
+ IGIN 'Netscape Administration Services' )
+attributeTypes: ( 0.9.2342.19200300.100.1.45 NAME 'organizationalStatus' DESC 
+ 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'RFC 1274' )
+attributeTypes: ( nsAdminUsers-oid NAME 'nsAdminUsers' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Admin
+ istration Services' )
+attributeTypes: ( 1.3.6.1.1.1.1.18 NAME 'oncRpcNumber' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 
+ 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.221 NAME 'passwordStorageScheme' DESC 
+ 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.576 NAME 'nsRoleFilter' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-
+ ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.70 NAME 'serverRoot' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+  Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.248 NAME 'nsValueDN' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscape
+  servers - value item' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.41 NAME 'parentOrganization'  EQUAL
+ ITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE 
+ X-ORIGIN 'Netscape' )
+attributeTypes: ( nsAdminEnableDSGW-oid NAME 'nsAdminEnableDSGW' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Administration Services' )
+attributeTypes: ( 2.5.18.2 NAME 'modifyTimestamp' DESC 'Standard LDAP attribut
+ e type' EQUALITY generalizedTimeMatch ORDERING generalizedTimeOrderingMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE NO-USER-MODIFICATION USAGE d
+ irectoryOperation X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.92 NAME ( 'passwordExpWarned' 'pwdExpi
+ rationWarned' ) DESC 'Netscape defined password policy attribute type' SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE directoryOperation X-ORIGIN
+  'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.54 NAME 'dmdName'  SUP name SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.692 NAME 'inetUserStatus' DESC '"activ
+ e", "inactive", or "deleted" status of a user' SYNTAX 1.3.6.1.4.1.1466.115.12
+ 1.1.15 SINGLE-VALUE X-ORIGIN 'Netscape subscriber interoperability' )
+attributeTypes: ( 2.16.840.1.113730.3.1.602 NAME 'entrydn' DESC 'Fedora define
+ d attribute type' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.12 SINGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN
+  'Fedora-Directory/1.1.0b2' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1098 NAME 'nsds5replicaSessionPauseTim
+ e' DESC 'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2073 NAME 'pamSecure' DESC 'Require se
+ cure (TLS/SSL) connection for PAM auth' SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 S
+ INGLE-VALUE X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( 2.5.21.2 NAME 'dITContentRules' DESC 'Standard LDAP attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 0.9.2342.19200300.100.1.56 NAME 'documentPublisher' DESC 'St
+ andard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE
+  X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 0.9.2342.19200300.102.1.6 NAME 'updatedByDocument' DESC 'Pil
+ ot attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Internet Wh
+ ite Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.522 NAME 'ntUserComment' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.234 NAME 'nsSNMPLocation' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.15 NAME 'supportedLDAPVersion' DESC
+  'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN
+  'RFC 2252' )
+attributeTypes: ( nsHostLocation-oid NAME 'nsHostLocation' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.590 NAME 'nsDS5ReplicaName' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2081 NAME ( 'passwordMaxRepeats' 'pwdM
+ axRepeats' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.
+ 3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.687 NAME 'nsds5replicaChangesSentSince
+ Startup' DESC 'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE NO-USER-MODIFICATION X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.46 NAME 'ntGroupDeleteGroup' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VAL
+ UE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.9 NAME 'newRdn' DESC 'Changelog attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Changelog Internet D
+ raft' )
+attributeTypes: ( 2.5.4.28 NAME 'preferredDeliveryMethod' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'R
+ FC 2256' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.6 NAME 'altServer' DESC 'Standard L
+ DAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2252' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.11 NAME 'newSuperior' DESC 'Changelog 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Changelog Inte
+ rnet Draft' )
+attributeTypes: ( 2.16.840.1.113730.3.1.229 NAME 'nsslapd-pluginVendor' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.8 NAME 'shadowWarning' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 
+ 2307' )
+attributeTypes: ( 2.5.4.47 NAME 'enhancedSearchGuide' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.68 NAME 'ntUserPasswordExpired' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-V
+ ALUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.585 NAME 'nsDS5ReplicatedAttributeList
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1002 NAME 'nsds7NewWinUserSyncEnabled'
+  DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+ SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.23 NAME 'lastModifiedTime' DESC 'old
+  variant of modifyTimestamp' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'R
+ FC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.110 NAME 'ntGroupId' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X-ORIG
+ IN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.535 NAME 'ntUserHomeDirDrive' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VA
+ LUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.207 NAME 'vlvBase' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscape D
+ irectory Server' )
+attributeTypes: ( nsServerMigrationClassname-oid NAME 'nsServerMigrationClassn
+ ame' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .15 X-ORIGIN 'Netscape' )
+attributeTypes: ( nsSSLPersonalitySSL-oid NAME 'nsSSLPersonalitySSL' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape' )
+attributeTypes: ( 2.5.4.35 NAME 'userPassword' DESC 'Standard LDAP attribute t
+ ype' EQUALITY octetStringMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.40{128} X-OR
+ IGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.4 NAME 'vendorName'  EQUALITY 1.3.6.1.4.1.1466.109
+ .114.1 SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE NO-USER-MODIFICATION
+  X-ORIGIN 'RFC 3045' )
+attributeTypes: ( 2.16.840.1.113730.3.1.55 NAME 'aci' DESC 'Netscape defined a
+ ccess control information attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.2
+ 6 USAGE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.6 NAME 'roomNumber' DESC 'Standard L
+ DAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 1274' 
+ )
+attributeTypes: ( 2.5.4.7 NAME ( 'l' 'locality' 'localityname' ) DESC 'Standar
+ d LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'RFC 2256' )
+attributeTypes: ( nsSSL3SessionTimeout-oid NAME 'nsSSL3SessionTimeout' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.105 NAME ( 'passwordLockout' 'pwdLockO
+ ut' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4
+ .1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.15 NAME 'ipServicePort' DESC 'Standard LDAP at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC
+  2307' )
+attributeTypes: ( nsSSL3-oid NAME 'nsSSL3' DESC 'Netscape defined attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.571 NAME 'nsSizeLimit' DESC 'Binder-ba
+ sed search operation size limit (entries)' SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 27 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Server'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.77 NAME 'changeTime' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+  Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.243 NAME 'nsValueCIS' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e servers - value item' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1 NAME 'carLicense' DESC 'inetOrgPerso
+ n attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2798' )
+attributeTypes: ( nsCertConfig-oid NAME 'nsCertConfig' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Certi
+ ficate Management System' )
+attributeTypes: ( 2.16.840.1.113730.3.1.99 NAME ( 'passwordMinLength' 'pwdMinL
+ ength' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.20 NAME 'telephoneNumber' DESC 'Standard LDAP attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.1.1.0 NAME 'uidNumber' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 2307
+ ' )
+attributeTypes: ( 0.9.2342.19200300.100.1.12 NAME 'documentTitle' DESC 'Standa
+ rd LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 12
+ 74' )
+attributeTypes: ( 2.16.840.1.113730.3.1.60 NAME 'ntUserAuthFlags' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2076 NAME ( 'passwordMinAlphas' 'pwdMi
+ nAlphas' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.406 NAME 'nsSynchUserIDFormat' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Directory Server' )
+attributeTypes: ( 2.5.21.5 NAME 'attributeTypes' DESC 'Standard LDAP attribute
+  type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( nsAdminEnableEnduser-oid NAME 'nsAdminEnableEnduser' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Administration Services' )
+attributeTypes: ( 1.3.6.1.1.1.1.26 NAME 'nisMapName' DESC 'Standard LDAP attri
+ bute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.544 NAME 'nsParentUniqueId' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.82 NAME 'cirBindDn' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscape 
+ Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.60 NAME 'jpegPhoto' DESC 'inetOrgPer
+ son attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.28 X-ORIGIN 'RFC 2798' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.2014 NAME 'nsICQid' DESC 'Netscape def
+ ined attribute type' SYNTAX 2.16.840.1.113730.3.7.1 X-ORIGIN 'Netscape Direct
+ ory Server' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.13 NAME 'javaClassNames' DESC 'Fully
+  qualified Java class or interface name' EQUALITY caseExactMatch SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.809 NAME 'nsds5replicaLastInitStatus' 
+ DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 S
+ INGLE-VALUE NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.682 NAME 'nsds5ReplicaPurgeDelay' DESC
+  'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1
+ 466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.39 NAME 'homePostalAddress' DESC 'St
+ andard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RF
+ C 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2063 NAME 'nsEncryptionAlgorithm' DESC
+  'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGL
+ E-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.13 NAME 'description' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 0.9.2342.19200300.100.1.46 NAME 'janetMailbox' DESC 'Standar
+ d LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 127
+ 4' )
+attributeTypes: ( 2.16.840.1.113730.3.1.224 NAME 'nsslapd-pluginPath' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.579 NAME 'nsDS5ReplicaPort' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALU
+ E X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.610 NAME 'nsAccountLock' DESC 'Operati
+ onal attribute for Account Inactivation' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.580 NAME 'nsDS5ReplicaTransportInfo' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SI
+ NGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1005 NAME 'nsds7DirsyncCookie' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VA
+ LUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.24 NAME 'lastModifiedBy' DESC 'old v
+ ariant of modifiersName' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1
+ 274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.530 NAME 'ntUserLogonHours' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE
+  X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.36 NAME 'nsLicensedFor' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsc
+ ape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.202 NAME 'replicaCredentials' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN '
+ Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.3023 NAME 'nsViewFilter' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Nets
+ cape Directory Server' )
+attributeTypes: ( nsSSL2Ciphers-oid NAME 'nsSSL2Ciphers' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( nsServerAddress-oid NAME 'nsServerAddress' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.91 NAME 'passwordExpirationTime' DESC 
+ 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.24 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory 
+ Server' )
+attributeTypes: ( nsProductName-oid NAME 'nsProductName' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2027 NAME 'nsruvReplicaLastModified' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-
+ ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.38 NAME 'authorityRevocationList' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.695 NAME 'inetSubscriberChallenge' DES
+ C 'Used to confirm subscriberIdentity.  This attribute holds the challenge ph
+ rase and is used in conjunction with the inetSubscriberResponse' SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'Netscape subscriber interoper
+ ability' )
+attributeTypes: ( 2.16.840.1.113730.3.1.58 NAME 'replicaBindDn' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netsc
+ ape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.605 NAME 'entryid' DESC 'Fedora define
+ d attribute type' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 15 SINGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Fedor
+ a-Directory/1.1.0b2' )
+attributeTypes: ( 2.16.840.1.113730.3.1.100 NAME 'passwordKeepHistory' DESC 'N
+ etscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.53 NAME 'personalSignature' DESC 'St
+ andard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC
+  1274' )
+attributeTypes: ( 0.9.2342.19200300.102.1.5 NAME 'updatesDocument' DESC 'Pilot
+  attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Internet Whit
+ e Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.525 NAME 'ntUserWorkstations' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VA
+ LUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.237 NAME 'nsSNMPMasterHost' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( nsDefaultAcceptLanguage-oid NAME 'nsDefaultAcceptLanguage' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-
+ ORIGIN 'Netscape' )
+attributeTypes: ( 0.9.2342.19200300.102.1.11 NAME ( 'authorCn' 'documentauthor
+ commonname' ) DESC 'Pilot attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 5 X-ORIGIN 'Internet White Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.593 NAME 'nsSNMPName' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.45 NAME 'ntGroupCreateNewGroup' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-
+ VALUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.215 NAME 'oid' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Direc
+ tory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.4 NAME 'employeeType' DESC 'inetOrgPer
+ son attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2798' 
+ )
+attributeTypes: ( 2.5.4.42 NAME 'givenName' DESC 'Standard LDAP attribute type
+ ' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.67 NAME 'ntUserProfile' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-
+ ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2079 NAME ( 'passwordMinSpecials' 'pwd
+ MinSpecials' ) DESC 'Netscape defined password policy attribute type' SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Serve
+ r' )
+attributeTypes: ( 2.16.840.1.113730.3.1.588 NAME 'nsDS5ReplicaId' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 2.5.21.8 NAME 'matchingRuleUse' DESC 'Standard LDAP attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 1.3.6.1.4.1.250.1.57 NAME ( 'labeledUri' 'labeledurl' ) DESC
+  'Uniform Resource Identifier with optional label' SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.26 X-ORIGIN 'RFC 2079' )
+attributeTypes: ( 1.3.6.1.1.1.1.23 NAME 'bootParameter' DESC 'Standard LDAP at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.89 NAME 'cirSyncInterval' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 2.5.4.30 NAME 'supportedApplicationContext' DESC 'Standard L
+ DAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.251 NAME 'nsValueFlags' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsc
+ ape servers - value item' )
+attributeTypes: ( 2.16.840.1.113730.3.1.804 NAME 'nsSchemaCSN' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USA
+ GE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsServerSecurity-oid NAME 'nsServerSecurity' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe' )
+attributeTypes: ( 0.9.2342.19200300.100.1.5 NAME ( 'drink' 'favouriteDrink' ) 
+ DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-OR
+ IGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.50 NAME 'replicaBeginOrc' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribut
+ e type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2066 NAME 'nsSaslMapFilterTemplate' DE
+ SC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SIN
+ GLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.198 NAME 'memberURL' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape
+  Directory Server' )
+attributeTypes: ( 2.5.4.16 NAME 'postalAddress' DESC 'Standard LDAP attribute 
+ type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.108 NAME 'passwordUnlock' DESC 'Netsca
+ pe defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.16 NAME 'ipServiceProtocol' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( nsSSLClientAuth-oid NAME 'nsSSLClientAuth' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.574 NAME 'nsRole' DESC 'Netscape defin
+ ed attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 NO-USER-MODIFICATION 
+ USAGE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsAdminGroupName-oid NAME 'nsAdminGroupName' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe' )
+attributeTypes: ( 2.16.840.1.113730.3.1.72 NAME 'serverVersionNumber' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.246 NAME 'nsValueInt' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'Netscap
+ e servers - value item' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.43 NAME 'preferredTimeZone' DESC 'p
+ referred time zone for a person' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSu
+ bstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Net
+ scape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.552 NAME 'costargettree' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.94 NAME 'retryCountResetTime' DESC 'Ne
+ tscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.12
+ 1.1.24 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Ser
+ ver' )
+attributeTypes: ( 2.5.4.23 NAME ( 'facsimileTelephoneNumber' 'fax' ) DESC 'Sta
+ ndard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 X-ORIGIN 'RFC
+  2256' )
+attributeTypes: ( 1.2.840.113556.1.2.102 NAME 'memberOf' DESC 'Group that the 
+ entry belongs to' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscape Del
+ egated Administrator' )
+attributeTypes: ( nsDirectoryURL-oid NAME 'nsDirectoryURL' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.690 NAME 'inetDomainBaseDN' DESC 'Base
+  DN of user subtree for a DNS domain' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SI
+ NGLE-VALUE X-ORIGIN 'Netscape subscriber interoperability' )
+attributeTypes: ( 1.3.6.1.1.1.1.3 NAME 'homeDirectory' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'RFC 
+ 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.569 NAME 'cosPriority' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-O
+ RIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsOsVersion-oid NAME 'nsOsVersion' DESC 'Netscape defined at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( nsJarfilename-oid NAME 'nsJarfilename' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2071 NAME 'pamIDAttr' DESC 'Name of at
+ tribute holding PAM ID' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Red Ha
+ t Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.54 NAME 'ditRedirect' DESC 'Standard
+  LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1274
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.232 NAME 'nsSNMPEnabled' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.4203.1.3.5 NAME 'supportedFeatures' DESC 'featur
+ es supported by the server' EQUALITY objectIdentifierMatch SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.38 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.6.6.5.2.4.10 NAME 'reciprocalNamingLink' DESC 'NADF attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'North American Direc
+ tory Forum (NADF)' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.17 NAME 'ldapSchemas'  SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 USAGE directoryOperation X-ORIGIN 'RFC 2927' )
+attributeTypes: ( 2.16.840.1.113730.3.1.81 NAME 'cirPort' DESC 'Netscape defin
+ ed attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Di
+ rectory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2017 NAME 'nsAIMStatusText' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Directory 
+ Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.685 NAME 'nsds5replicaLastUpdateStart'
+  DESC 'Netscape defined attribute type' EQUALITY generalizedTimeMatch ORDERIN
+ G generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VA
+ LUE NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsAdminSIEDN-oid NAME 'nsAdminSIEDN' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.48 NAME 'replicaPort' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.210 NAME 'vlvSort' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape D
+ irectory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.43 NAME ( 'co' 'friendlycountryname'
+  ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X
+ -ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.227 NAME 'nsslapd-pluginId' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.5.4.45 NAME 'x500UniqueIdentifier' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.613 NAME 'copiedFrom' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAG
+ E directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsServerPort-oid NAME 'nsServerPort' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.8 NAME 'javaSerializedData' DESC 'Se
+ rialized form of a Java object' SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 SINGLE-V
+ ALUE X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.583 NAME 'nsDS5ReplicaBindMethod' DESC
+  'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGL
+ E-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.21 NAME 'secretary' DESC 'Standard L
+ DAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1274' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.1000 NAME 'nsds7WindowsReplicaSubtree'
+  DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+ SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsSSLActivation-oid NAME 'nsSSLActivation' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.533 NAME 'ntUserCodePage' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.35 NAME 'changeLog' DESC 'the distingu
+ ished name of the entry which contains the set of entries comprising this ser
+ vers changelog' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.12 X-ORIGIN 'Changelog Internet Draft' )
+attributeTypes: ( 2.16.840.1.113730.3.1.205 NAME 'changeLogMaximumConcurrentWr
+ ites' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.15 X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2022 NAME 'nsICQStatusGraphic' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VA
+ LUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Director
+ y Server' )
+attributeTypes: ( nsDirectoryInfoRef-oid NAME 'nsDirectoryInfoRef' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Ne
+ tscape' )
+attributeTypes: ( 2.5.4.52 NAME 'supportedAlgorithms' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.57 NAME 'replicaRoot' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.608 NAME 'nsDS5Task' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+  Directory Server' )
+attributeTypes: ( 2.5.4.9 NAME ( 'street' 'streetaddress' ) DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2069 NAME 'pamMissingSuffix' DESC 'How
+  to handle missing include or exclude suffixes' SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.15 SINGLE-VALUE X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( nsGroupRDNComponent-oid NAME 'nsGroupRDNComponent' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape Administration Services' )
+attributeTypes: ( 2.5.4.19 NAME 'physicalDeliveryOfficeName' DESC 'Standard LD
+ AP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 0.9.2342.19200300.102.1.8 NAME 'subject' DESC 'Pilot attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Internet White Pages 
+ Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.528 NAME 'ntUserAcctExpires' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VAL
+ UE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.103 NAME ( 'passwordCheckSyntax' 'pwdC
+ heckSyntax' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server
+ ' )
+attributeTypes: ( 1.3.6.1.1.1.1.13 NAME 'memberNisNetgroup' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 0.9.2342.19200300.102.1.12 NAME ( 'authorSn' 'documentauthor
+ surname' ) DESC 'Pilot attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X
+ -ORIGIN 'Internet White Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.79 NAME 'cirReplicaRoot' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Nets
+ cape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.241 NAME 'displayName' DESC 'inetOrgPe
+ rson attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIG
+ IN 'RFC 2798' )
+attributeTypes: ( nsProductVersion-oid NAME 'nsProductVersion' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe' )
+attributeTypes: ( 2.16.840.1.113730.3.1.40 NAME 'userSMIMECertificate' DESC 'i
+ netOrgPerson attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RF
+ C 2798' )
+attributeTypes: ( nsSecureServerPort-oid NAME 'nsSecureServerPort' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.218 NAME 'replicaAbandonedChanges' DES
+ C 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-OR
+ IGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.7 NAME 'changeType' DESC 'Changelog at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Changelog Intern
+ et Draft' )
+attributeTypes: ( 2.5.4.26 NAME 'registeredAddress' DESC 'Standard LDAP attrib
+ ute type' SUP postalAddress SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RF
+ C 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.999 NAME ( 'passwordGraceLimit' 'pwdGr
+ aceLoginLimit' ) DESC 'Netscape defined password policy attribute type' SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Ser
+ ver' )
+attributeTypes: ( nsBindPassword-oid NAME 'nsBindPassword' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.812 NAME 'netscapeReversiblePassword' 
+ DESC 'password for HTTP Digest/MD5 authentication' EQUALITY octetStringMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 X-ORIGIN 'Netscape Web Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.6 NAME 'shadowMin' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 2307
+ ' )
+attributeTypes: ( 0.9.2342.19200300.100.1.10 NAME 'manager' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.62 NAME 'ntUserParms' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-OR
+ IGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2074 NAME 'pamService' DESC 'Service n
+ ame to pass to pam_start' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X
+ -ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.24 NAME 'bootFile' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.542 NAME 'nsUniqueId' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE NO-U
+ SER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Directory Server
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.84 NAME 'cirUseSsl' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape 
+ Directory Server' )
+attributeTypes: ( 2.5.4.33 NAME 'roleOccupant' DESC 'Standard LDAP attribute t
+ ype' SUP distinguishedName SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC
+  2256' )
+attributeTypes: ( nsServerID-oid NAME 'nsServerID' DESC 'Netscape defined attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.254 NAME 'nsValueHelpURL' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Net
+ scape servers - value item' )
+attributeTypes: ( 2.16.840.1.113730.3.1.807 NAME 'nsds5replicaLastInitStart' D
+ ESC 'Netscape defined attribute type' EQUALITY generalizedTimeMatch ORDERING 
+ generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALU
+ E NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.8 NAME 'userClass' DESC 'Standard LD
+ AP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.5.4.1 NAME 'aliasedObjectName' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE X-ORIGIN 'RFC 2256
+ ' )
+attributeTypes: ( 2.5.4.11 NAME ( 'ou' 'organizationalUnitName' ) DESC 'Standa
+ rd LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'RFC 2256' )
+attributeTypes: ( 0.9.2342.19200300.100.1.44 NAME 'uniqueIdentifier' DESC 'Sta
+ ndard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC
+  1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.222 NAME ( 'passwordMinAge' 'pwdMinAge
+ ' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.48 NAME 'protocolInformation' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.577 NAME 'cosIndirectSpecifier' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-
+ VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.71 NAME 'serverProductName' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.249 NAME 'nsValueType' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe servers - value item' )
+attributeTypes: ( 2.16.840.1.113730.3.1.38 NAME 'nsLicenseEndTime' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.200 NAME 'changeLogMaximumAge' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Directory Server' )
+attributeTypes: ( 2.5.18.3 NAME 'creatorsName' DESC 'Standard LDAP attribute t
+ ype' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SIN
+ GLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.93 NAME 'passwordRetryCount' DESC 'Net
+ scape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.15 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Serv
+ er' )
+attributeTypes: ( nsSuiteSpotUser-oid NAME 'nsSuiteSpotUser' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.693 NAME 'inetUserHttpURL' DESC 'A use
+ rs Web addresses' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape sub
+ scriber interoperability' )
+attributeTypes: ( 2.16.840.1.113730.3.1.603 NAME 'dncomp' DESC 'Fedora defined
+  attribute type' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.
+ 121.1.12 NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Fedora-Direc
+ tory/1.1.0b2' )
+attributeTypes: ( nsBaseDN-oid NAME 'nsBaseDN' DESC 'Netscape defined attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.523 NAME 'ntUserFlags' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X-OR
+ IGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 0.9.2342.19200300.102.1.7 NAME 'keyWords' DESC 'Pilot attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Internet White Pages
+  Pilot' )
+attributeTypes: ( 0.9.2342.19200300.100.1.51 NAME 'subtreeMinimumQuality' DESC
+  'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-V
+ ALUE X-ORIGIN 'RFC 1274' )
+attributeTypes: ( nsExecRef-oid NAME 'nsExecRef' DESC 'Netscape defined attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.235 NAME 'nsSNMPContact' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.591 NAME 'nsDS5ReplicaReferral' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2082 NAME ( 'passwordMinCategories' 'p
+ wdMinCategories' ) DESC 'Netscape defined password policy attribute type' SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory S
+ erver' )
+attributeTypes: ( 2.16.840.1.113730.3.1.688 NAME 'nsds5replicaLastUpdateStatus
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.37 NAME 'associatedDomain' DESC 'Sta
+ ndard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC
+  1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.47 NAME 'ntGroupType' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-OR
+ IGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.213 NAME 'vlvEnabled' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.5.4.29 NAME 'presentationAddress' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'RFC 2
+ 256' )
+attributeTypes: ( 1.3.6.1.1.1.1.9 NAME 'shadowInactive' DESC 'Standard LDAP at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC
+  2307' )
+attributeTypes: ( 2.5.4.40 NAME 'crossCertificatePair' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 0.9.2342.19200300.100.1.15 NAME 'documentLocation' DESC 'Sta
+ ndard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC
+  1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.69 NAME 'subtreeACI' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape
+  Directory Server 1.0' )
+attributeTypes: ( 2.16.840.1.113730.3.1.586 NAME 'nsDS5ReplicaUpdateSchedule' 
+ DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X
+ -ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1003 NAME 'nsds7NewWinGroupSyncEnabled
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.22 NAME 'otherMailbox' DESC 'Standar
+ d LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 127
+ 4' )
+attributeTypes: ( 2.16.840.1.113730.3.1.111 NAME 'ntUniqueId' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-OR
+ IGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.536 NAME 'ntGroupAttributes' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALU
+ E X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 1.3.6.1.1.1.1.21 NAME 'ipNetmaskNumber' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'R
+ FC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.208 NAME 'vlvScope' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'Netscape 
+ Directory Server' )
+attributeTypes: ( nsNickName-oid NAME 'nsNickName' DESC 'Netscape defined attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.5.4.36 NAME 'userCertificate' DESC 'Standard LDAP attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.5 NAME 'vendorVersion'  EQUALITY 1.3.6.1.4.1.1466.
+ 109.114.1 SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE NO-USER-MODIFICAT
+ ION X-ORIGIN 'RFC 3045' )
+attributeTypes: ( 2.16.840.1.113730.3.1.802 NAME 'nsds5ReplicaLegacyConsumer' 
+ DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 S
+ INGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsKeyfile-oid NAME 'nsKeyfile' DESC 'Netscape defined attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.52 NAME 'replicaUpdateSchedule' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.7 NAME 'photo' DESC 'Standard LDAP a
+ ttribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.5.4.6 NAME ( 'c' 'countryName' ) DESC 'Standard LDAP attri
+ bute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGI
+ N 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2064 NAME 'nsSaslMapRegexString' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE
+ -VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.14 NAME 'searchGuide' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.106 NAME ( 'passwordMaxFailure' 'pwdMa
+ xFailure' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' 
+ )
+attributeTypes: ( 0.9.2342.19200300.100.1.49 NAME 'dSAQuality' DESC 'Standard 
+ LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIG
+ IN 'RFC 1274' )
+attributeTypes: ( 1.3.6.1.1.1.1.14 NAME 'nisNetgroupTriple' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.572 NAME 'nsTimeLimit' DESC 'Binder-ba
+ sed search operation time limit (seconds)' SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 27 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Server'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.74 NAME 'administratorContactInfo' DES
+ C 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-OR
+ IGIN 'Netscape Administration Services' )
+attributeTypes: ( nsClassname-oid NAME 'nsClassname' DESC 'Netscape defined at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.244 NAME 'nsValueCES' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscap
+ e servers - value item' )
+attributeTypes: ( nsDeleteclassname-oid NAME 'nsDeleteclassname' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Administration Services' )
+attributeTypes: ( nsAdminCgiWaitPid-oid NAME 'nsAdminCgiWaitPid' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2 NAME 'departmentNumber' DESC 'inetOr
+ gPerson attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 27
+ 98' )
+attributeTypes: ( 2.16.840.1.113730.3.1.550 NAME 'cosAttribute' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsc
+ ape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.96 NAME ( 'passwordHistory' 'pwdHistor
+ y' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.
+ 1.1466.115.121.1.5 USAGE directoryOperation X-ORIGIN 'Netscape Directory Serv
+ er' )
+attributeTypes: ( 2.5.4.21 NAME 'telexNumber' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.1.1.1 NAME 'gidNumber' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 2307
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.61 NAME 'ntUserUsrComment' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE
+  X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2077 NAME ( 'passwordMinUppers' 'pwdMi
+ nUppers' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.407 NAME 'nsSynchUniqueAttribute' DESC
+  'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORI
+ GIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.21.6 NAME 'objectClasses' DESC 'Standard LDAP attribute 
+ type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.230 NAME 'nsslapd-pluginDescription' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-
+ ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsAdminCacheLifetime-oid NAME 'nsAdminCacheLifetime' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.327 NAME 'nsIndexType' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.545 NAME 'nscpEntryDN' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE NO-
+ USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Directory Serve
+ r' )
+attributeTypes: ( 2.16.840.1.113730.3.1.83 NAME 'cirUsePersistentSearch' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIG
+ IN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2015 NAME 'nsYIMid' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape 
+ Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.10 NAME 'javaFactory' DESC 'Fully qu
+ alified Java class name of a JNDI object factory' EQUALITY caseExactMatch SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.5.18.10 NAME 'subschemaSubentry' DESC 'Standard LDAP attri
+ bute type' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 12 SINGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'RFC 2
+ 252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.683 NAME 'nsds5ReplicaTombstonePurgeIn
+ terval' DESC 'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server
+ ' )
+attributeTypes: ( 0.9.2342.19200300.100.1.38 NAME 'associatedName' DESC 'Stand
+ ard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1
+ 274' )
+attributeTypes: ( nsConfigRoot-oid NAME 'nsConfigRoot' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 0.9.2342.19200300.100.1.41 NAME ( 'mobile' 'mobileTelephoneN
+ umber' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.50 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( nsAdminDomainName-oid NAME 'nsAdminDomainName' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.225 NAME 'nsslapd-pluginInitfunc' DESC
+  'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORI
+ GIN 'Netscape Directory Server' )
+attributeTypes: ( nsAdminEndUserHTMLIndex-oid NAME 'nsAdminEndUserHTMLIndex' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-
+ ORIGIN 'Netscape Administration Services' )
+attributeTypes: ( nsBuildSecurity-oid NAME 'nsBuildSecurity' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( 2.16.840.1.113730.3.1.581 NAME 'nsDS5ReplicaBindDN' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 
+ 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.531 NAME 'ntUserBadPwCount' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE
+  X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.37 NAME 'nsLicenseStartTime' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.203 NAME 'replicaEntryFilter' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 
+ 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.39 NAME 'certificateRevocationList' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2020 NAME 'nsYIMStatusGraphic' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VA
+ LUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Director
+ y Server' )
+attributeTypes: ( nsAdminAccountInfo-oid NAME 'nsAdminAccountInfo' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.696 NAME 'inetSubscriberResponse' DESC
+  'Used to confirm subscriberIdentity.  This attribute holds the response phra
+ se and is used in conjunction with the inetSubscriberChallenge' SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'Netscape subscriber interopera
+ bility' )
+attributeTypes: ( 2.5.4.50 NAME 'uniqueMember' DESC 'Standard LDAP attribute t
+ ype' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.4.1.250.1.60 NAME ( 'ttl' 'timeToLive' ) DESC 'time 
+ to live in seconds for cached objects' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X
+ -ORIGIN 'LDAP Caching Internet Draft' )
+attributeTypes: ( 0.9.2342.19200300.100.1.2 NAME 'textEncodedORAddress' DESC '
+ Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.59 NAME 'ntUserPriv' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X-ORIG
+ IN 'Netscape NT Synchronization' )
+attributeTypes: ( nsDefaultObjectClass-oid NAME 'nsDefaultObjectClass' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.101 NAME ( 'passwordInHistory' 'pwdInH
+ istory' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6
+ .1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.52 NAME 'subtreeMaximumQuality' DESC
+  'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-V
+ ALUE X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.526 NAME 'ntUserLastLogon' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE
+  X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 1.3.6.1.1.1.1.11 NAME 'shadowFlag' DESC 'Standard LDAP attri
+ bute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 23
+ 07' )
+attributeTypes: ( 2.16.840.1.113730.3.1.238 NAME 'nsSNMPMasterPort' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.102.1.10 NAME 'documentStore' DESC 'Pilot 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Internet White
+  Pages Pilot' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.7 NAME 'javaCodebase' DESC 'URL(s) s
+ pecifying the location of class definition' EQUALITY caseExactIA5Match SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.42 NAME 'ntUserCreateNewAccount' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE
+ -VALUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.216 NAME 'userPKCS12' DESC 'inetOrgPer
+ son attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2798' )
+attributeTypes: ( 2.16.840.1.113730.3.1.5 NAME 'changeNumber' DESC 'Changelog 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'Changelog Inte
+ rnet Draft' )
+attributeTypes: ( 2.5.18.9 NAME 'hasSubordinates' DESC 'if TRUE, subordinate e
+ ntries may exist' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 S
+ INGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'numSubord
+ inates Internet Draft' )
+attributeTypes: ( 2.5.4.24 NAME 'x121Address' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.997 NAME 'pwdpolicysubentry' DESC 'Net
+ scape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.12 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Serv
+ er' )
+attributeTypes: ( 2.5.4.43 NAME 'initials' DESC 'Standard LDAP attribute type'
+  SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.1.1.4 NAME 'loginShell' DESC 'Standard LDAP attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'RFC 230
+ 7' )
+attributeTypes: ( 2.16.840.1.113730.3.1.64 NAME 'ntUserNumLogons' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.589 NAME 'nsDS5ReplicaType' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( nsDisplayName-oid NAME 'nsDisplayName' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Adm
+ inistration Services' )
+attributeTypes: ( 1.3.6.1.1.1.1.22 NAME 'macAddress' DESC 'Standard LDAP attri
+ bute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.86 NAME 'cirLastUpdateApplied' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN
+  'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.31 NAME 'member' DESC 'Standard LDAP attribute type' S
+ UP distinguishedName SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2256'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.2018 NAME 'nsAIMStatusGraphic' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VA
+ LUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Netscape Director
+ y Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.252 NAME 'nsValueDescription' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'Netscape servers - value item' )
+attributeTypes: ( 2.16.840.1.113730.3.1.805 NAME 'nsds5replicaTimeout' DESC 'N
+ etscape defined attribute type' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.51 NAME 'replicaUpdateReplayed' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.3 NAME ( 'cn' 'commonName' ) DESC 'Standard LDAP attri
+ bute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.2067 NAME 'pamIncludeSuffix' DESC 'Suf
+ fixes to include for PAM authentication' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12
+  X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.199 NAME 'memberCertificateDescription
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.17 NAME 'postalCode' DESC 'Standard LDAP attribute typ
+ e' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.109 NAME ( 'passwordLockoutDuration' '
+ pwdLockoutDuration' ) DESC 'Netscape defined password policy attribute type' 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Director
+ y Server' )
+attributeTypes: ( nsSSL2-oid NAME 'nsSSL2' DESC 'Netscape defined attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 1.3.6.1.1.1.1.19 NAME 'ipHostNumber' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.220 NAME ( 'passwordMustChange' 'pwdMu
+ stChange' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.575 NAME 'nsRoleDN' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 USAGE directoryOper
+ ation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.73 NAME 'installationTimeStamp' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.247 NAME 'nsValueBin' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'Netscape
+  servers - value item' )
+attributeTypes: ( 2.5.18.1 NAME 'createTimestamp' DESC 'Standard LDAP attribut
+ e type' EQUALITY generalizedTimeMatch ORDERING generalizedTimeOrderingMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE NO-USER-MODIFICATION USAGE d
+ irectoryOperation X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.553 NAME 'costemplatedn' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.95 NAME 'accountUnlockTime' DESC 'Nets
+ cape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.24 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Serve
+ r' )
+attributeTypes: ( 2.16.840.1.113730.3.1.691 NAME 'inetDomainStatus' DESC '"act
+ ive", "inactive", or "deleted" status of a domain' SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape subscriber interoperability' )
+attributeTypes: ( 2.16.840.1.113730.3.1.601 NAME 'adminRole' DESC 'Administrat
+ ive role' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Delegated A
+ dministrator' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2072 NAME 'pamFallback' DESC 'Fallback
+  to regular LDAP BIND if PAM auth fails' SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+ SINGLE-VALUE X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( nsLogSuppress-oid NAME 'nsLogSuppress' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.5.21.1 NAME 'dITStructureRules' DESC 'Standard LDAP attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.521 NAME 'ntUserHomeDir' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.233 NAME 'nsSNMPOrganization' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.14 NAME 'supportedSASLMechanisms' D
+ ESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORI
+ GIN 'RFC 2252' )
+attributeTypes: ( nsHardwarePlatform-oid NAME 'nsHardwarePlatform' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.686 NAME 'nsds5replicaLastUpdateEnd' D
+ ESC 'Netscape defined attribute type' EQUALITY generalizedTimeMatch ORDERING 
+ generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALU
+ E NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2080 NAME ( 'passwordMin8bit' 'pwdMin8
+ bit' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.49 NAME 'replicaUpdateFailedAt' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.8 NAME 'changes' DESC 'Changelog attri
+ bute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'Changelog Internet D
+ raft' )
+attributeTypes: ( 0.9.2342.19200300.100.1.42 NAME ( 'pager' 'pagerTelephoneNum
+ ber' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 50 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.7 NAME 'supportedExtension' DESC 'S
+ tandard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.38 X-ORIGIN 'R
+ FC 2252' )
+attributeTypes: ( 2.16.840.1.113730.3.1.10 NAME 'deleteOldRdn' DESC 'Changelog
+  attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 X-ORIGIN 'Changelog Inte
+ rnet Draft' )
+attributeTypes: ( 2.16.840.1.113730.3.1.228 NAME 'nsslapd-pluginVersion' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIG
+ IN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.46 NAME 'dnQualifier' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.614 NAME 'copyingFrom' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USA
+ GE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsSSLToken-oid NAME 'nsSSLToken' DESC 'Netscape defined attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.584 NAME 'nsDS5ReplicaRoot' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALU
+ E X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1001 NAME 'nsds7DirectoryReplicaSubtre
+ e' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 5 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.534 NAME 'ntUserPrimaryGroupId' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-V
+ ALUE X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 0.9.2342.19200300.100.1.20 NAME 'homePhone' DESC 'Standard L
+ DAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 X-ORIGIN 'RFC 1274' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.206 NAME 'filterInfo' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.5.4.34 NAME 'seeAlso' DESC 'Standard LDAP attribute type' 
+ SUP distinguishedName SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2256
+ ' )
+attributeTypes: ( nsSSL3Ciphers-oid NAME 'nsSSL3Ciphers' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.5.4.53 NAME 'deltaRevocationList' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( nsUniqueAttribute-oid NAME 'nsUniqueAttribute' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.54 NAME 'replicaUseSSL' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsc
+ ape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.609 NAME 'nsds5BeginReplicaRefresh' DE
+ SC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-O
+ RIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.1 NAME ( 'uid' 'userid' ) DESC 'Stan
+ dard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 
+ 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1097 NAME 'nsds5replicaBusyWaitTime' D
+ ESC 'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 1.3.6.1.4.
+ 1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.8 NAME ( 'st' 'stateOrProvinceName' ) DESC 'Standard L
+ DAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'R
+ FC 2256' )
+attributeTypes: ( nsViewConfiguration-oid NAME 'nsViewConfiguration' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape Administration Services' )
+attributeTypes: ( 0.9.2342.19200300.102.1.9 NAME 'abstract' DESC 'Pilot attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Internet White Pages
+  Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.529 NAME 'ntUserMaxStorage' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE
+  X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.104 NAME ( 'passwordWarning' 'pwdExpir
+ eWarning' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' 
+ )
+attributeTypes: ( 1.3.6.1.1.1.1.12 NAME 'memberUid' DESC 'Standard LDAP attrib
+ ute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'RFC 2307' )
+attributeTypes: ( nsAccessLog-oid NAME 'nsAccessLog' DESC 'Netscape defined at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( nsPidLog-oid NAME 'nsPidLog' DESC 'Netscape defined attribut
+ e type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.570 NAME 'nsLookThroughLimit' DESC 'Bi
+ nder-based search operation look through limit (candidate entries)' SYNTAX 1.
+ 3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.76 NAME 'serverHostName' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Administration Services' )
+attributeTypes: ( nsCertfile-oid NAME 'nsCertfile' DESC 'Netscape defined attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.242 NAME 'nsSystemIndex' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Nets
+ cape Directory Server' )
+attributeTypes: ( nsServerCreationClassname-oid NAME 'nsServerCreationClassnam
+ e' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.1
+ 5 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.41 NAME 'ntUserDomainId' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.219 NAME 'vlvUses' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'Netscape D
+ irectory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.973 NAME 'nsds5ReplConflict' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE dire
+ ctoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.18.4 NAME 'modifiersName' DESC 'Standard LDAP attribute 
+ type' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SI
+ NGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'RFC 2252' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.98 NAME 'passwordExp' DESC 'Netscape d
+ efined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 S
+ INGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.27 NAME 'destinationIndicator' DESC 'Standard LDAP att
+ ribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.1.1.7 NAME 'shadowMax' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'RFC 2307
+ ' )
+attributeTypes: ( 0.9.2342.19200300.100.1.13 NAME 'documentVersion' DESC 'Stan
+ dard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 
+ 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.63 NAME 'ntUserUnitsPerWeek' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALU
+ E X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2075 NAME ( 'passwordMinDigits' 'pwdMi
+ nDigits' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.21.4 NAME 'matchingRules' DESC 'Standard LDAP attribute 
+ type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 1.3.6.1.1.1.1.27 NAME 'nisMapEntry' DESC 'Standard LDAP attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'RFC 2
+ 307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.543 NAME 'nsState' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X-ORIGIN
+  'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.85 NAME 'cirBindCredentials' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN '
+ Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.12 NAME 'javaDoc' DESC 'The Java doc
+ umentation for the class' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.
+ 115.121.1.26 X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.808 NAME 'nsds5replicaLastInitEnd' DES
+ C 'Netscape defined attribute type' EQUALITY generalizedTimeMatch ORDERING ge
+ neralizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE 
+ NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsUserIDFormat-oid NAME 'nsUserIDFormat' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape A
+ dministration Services' )
+attributeTypes: ( 0.9.2342.19200300.100.1.9 NAME 'host' DESC 'Standard LDAP at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.5.4.0 NAME 'objectClass' DESC 'Standard LDAP attribute typ
+ e' EQUALITY objectIdentifierMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.38 X-ORIG
+ IN 'RFC 2256' )
+attributeTypes: ( nsAdminOneACLDir-oid NAME 'nsAdminOneACLDir' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe Administration Services' )
+attributeTypes: ( nsBuildNumber-oid NAME 'nsBuildNumber' DESC 'Netscape define
+ d attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.5.4.12 NAME 'title' DESC 'Standard LDAP attribute type' SU
+ P name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 0.9.2342.19200300.100.1.47 NAME 'mailPreferenceOption' DESC 
+ 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VA
+ LUE X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.223 NAME ( 'passwordResetFailureCount'
+  'pwdFailureCountInterval' ) DESC 'Netscape defined password policy attribute
+  type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape D
+ irectory Server' )
+attributeTypes: ( 2.5.4.49 NAME ( 'dn' 'distinguishedName' ) DESC 'Standard LD
+ AP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.578 NAME 'nsDS5ReplicaHost' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.1004 NAME 'nsds7WindowsDomain' DESC 'N
+ etscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-V
+ ALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.25 NAME ( 'dc' 'domaincomponent' ) D
+ ESC 'Standard LDAP attribute type' EQUALITY caseIgnoreIA5Match SUBSTR caseIgn
+ oreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORI
+ GIN 'RFC 2247' )
+attributeTypes: ( 2.16.840.1.113730.3.1.39 NAME 'preferredLanguage' DESC 'inet
+ OrgPerson attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'RFC 2798' )
+attributeTypes: ( 2.16.840.1.113730.3.1.201 NAME 'changeLogMaximumSize' DESC '
+ Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGI
+ N 'Netscape Directory Server' )
+attributeTypes: ( nsSerialNumber-oid NAME 'nsSerialNumber' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' 
+ )
+attributeTypes: ( 2.16.840.1.113730.3.1.90 NAME 'cirBeginORC' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscap
+ e Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.694 NAME 'inetSubscriberAccountId' DES
+ C 'A unique attribute linking the subscriber to a billing system' SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape subscriber interoperability' )
+attributeTypes: ( 2.16.840.1.113730.3.1.604 NAME 'parentid' DESC 'Fedora defin
+ ed attribute type' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .15 SINGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'Fedo
+ ra-Directory/1.1.0b2' )
+attributeTypes: ( 0.9.2342.19200300.102.1.4 NAME 'obsoletedByDocument' DESC 'P
+ ilot attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Internet 
+ White Pages Pilot' )
+attributeTypes: ( 0.9.2342.19200300.100.1.50 NAME 'singleLevelQuality' DESC 'S
+ tandard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.524 NAME 'ntUserScriptPath' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALU
+ E X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.236 NAME 'nsSNMPDescription' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.13 NAME 'supportedControl' DESC 'St
+ andard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.38 X-ORIGIN 'RF
+ C 2252' )
+attributeTypes: ( nsPreference-oid NAME 'nsPreference' DESC 'Netscape defined 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Admin
+ istration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2013 NAME 'nsAIMid' DESC 'Netscape def
+ ined attribute type' SYNTAX 2.16.840.1.113730.3.7.1 X-ORIGIN 'Netscape Direct
+ ory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.592 NAME 'nsDS5ReplicaAutoReferral' DE
+ SC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SIN
+ GLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2083 NAME ( 'passwordMinTokenLength' '
+ pwdMinTokenLength' ) DESC 'Netscape defined password policy attribute type' S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory
+  Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.689 NAME 'nsds5replicaUpdateInProgress
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+ SINGLE-VALUE NO-USER-MODIFICATION X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.44 NAME 'ntGroupDomainId' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE 
+ X-ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.214 NAME 'passwordAllowChangeTime' DES
+ C 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.1
+ 15.121.1.24 SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Director
+ y Server' )
+attributeTypes: ( nsDirectoryFailoverList-oid NAME 'nsDirectoryFailoverList' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-
+ ORIGIN 'Netscape' )
+attributeTypes: ( nsSSLSessionTimeout-oid NAME 'nsSSLSessionTimeout' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape' )
+attributeTypes: ( 2.5.4.41 NAME 'name'  EQUALITY caseIgnoreMatch SUBSTR caseIg
+ noreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{32768} X-ORIGIN 'RFC
+  2256' )
+attributeTypes: ( 0.9.2342.19200300.100.1.14 NAME 'documentAuthor' DESC 'Stand
+ ard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 1
+ 274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.66 NAME 'ntUserUniqueId' DESC 'Netscap
+ e defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 SINGLE-VALUE X-
+ ORIGIN 'Netscape NT Synchronization' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2078 NAME ( 'passwordMinLowers' 'pwdMi
+ nLowers' ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.587 NAME 'nsds50ruv' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape
+  Directory Server' )
+attributeTypes: ( 1.3.6.1.1.1.1.20 NAME 'ipNetworkNumber' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'R
+ FC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.209 NAME 'vlvFilter' DESC 'Netscape de
+ fined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape
+  Directory Server' )
+attributeTypes: ( nsErrorLog-oid NAME 'nsErrorLog' DESC 'Netscape defined attr
+ ibute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.88 NAME 'cirUpdateFailedat' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.250 NAME 'nsValueDefault' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape servers - value item' )
+attributeTypes: ( 2.5.4.37 NAME 'cACertificate' DESC 'Standard LDAP attribute 
+ type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.803 NAME 'nsBackendSuffix' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE direct
+ oryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.53 NAME 'replicaBindMethod' DESC 'Nets
+ cape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'N
+ etscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.4 NAME 'info' DESC 'Standard LDAP at
+ tribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2065 NAME 'nsSaslMapBaseDNTemplate' DE
+ SC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SIN
+ GLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( nsSSLSupportedCiphers-oid NAME 'nsSSLSupportedCiphers' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIG
+ IN 'Netscape' )
+attributeTypes: ( 2.5.4.5 NAME 'serialNumber' DESC 'Standard LDAP attribute ty
+ pe' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.197 NAME 'replicaHost' DESC 'Netscape 
+ defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netsca
+ pe Directory Server' )
+attributeTypes: ( 2.5.4.15 NAME 'businessCategory' DESC 'Standard LDAP attribu
+ te type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 2.16.840.1.113730.3.1.107 NAME 'passwordResetDuration' DESC 
+ 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.15 X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 0.9.2342.19200300.100.1.48 NAME 'buildingName' DESC 'Standar
+ d LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 127
+ 4' )
+attributeTypes: ( 1.3.6.1.1.1.1.17 NAME 'ipProtocolNumber' DESC 'Standard LDAP
+  attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN '
+ RFC 2307' )
+attributeTypes: ( nsInstalledLocation-oid NAME 'nsInstalledLocation' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape' )
+attributeTypes: ( 2.16.840.1.113730.3.1.573 NAME 'nsIdleTimeout' DESC 'Binder-
+ based connection idle timeout (seconds)' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE USAGE directoryOperation X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.75 NAME 'adminUrl' DESC 'Netscape defi
+ ned attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscape A
+ dministration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.245 NAME 'nsValueTel' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.50 X-ORIGIN 'Netscap
+ e servers - value item' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.42 NAME 'preferredLocale' DESC 'pre
+ ferred locale for a person' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstri
+ ngsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape
+ ' )
+attributeTypes: ( nsNYR-oid NAME 'nsNYR' DESC 'Netscape defined attribute type
+ ' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Administration Serv
+ ices' )
+attributeTypes: ( 2.16.840.1.113730.3.1.3 NAME 'employeeNumber' DESC 'inetOrgP
+ erson attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORI
+ GIN 'RFC 2798' )
+attributeTypes: ( 2.16.840.1.113730.3.1.551 NAME 'cosspecifier' DESC 'Netscape
+  defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-
+ ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.97 NAME ( 'passwordMaxAge' 'pwdMaxAge'
+  ) DESC 'Netscape defined password policy attribute type' SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.22 NAME 'teletexTerminalIdentifier' DESC 'Standard LDA
+ P attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
+attributeTypes: ( 1.3.6.1.1.1.1.2 NAME 'gecos' DESC 'Standard LDAP attribute t
+ ype' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'RFC 2307' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2070 NAME 'pamIDMapMethod' DESC 'How t
+ o map BIND DN to PAM identity' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VA
+ LUE X-ORIGIN 'Red Hat Directory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.408 NAME 'replicaLastRelevantChange' D
+ ESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-
+ ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 2.5.21.7 NAME 'nameForms' DESC 'Standard LDAP attribute type
+ ' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2252' )
+attributeTypes: ( 0.9.2342.19200300.100.1.55 NAME 'audio' DESC 'Standard LDAP 
+ attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 1274' )
+attributeTypes: ( 0.9.2342.19200300.102.1.3 NAME 'obsoletesDocument' DESC 'Pil
+ ot attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'Internet Wh
+ ite Pages Pilot' )
+attributeTypes: ( 2.16.840.1.113730.3.1.231 NAME 'nsslapd-pluginEnabled' DESC 
+ 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIG
+ IN 'Netscape Directory Server' )
+attributeTypes: ( nsWellKnownJarfiles-oid NAME 'nsWellKnownJarfiles' DESC 'Net
+ scape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN '
+ Netscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.328 NAME 'nsMatchingRule' DESC 'Netsca
+ pe defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Net
+ scape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.16 NAME 'ldapSyntaxes' DESC 'Standa
+ rd LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE directoryO
+ peration X-ORIGIN 'RFC 2252' )
+attributeTypes: ( nsAdminAccessHosts-oid NAME 'nsAdminAccessHosts' DESC 'Netsc
+ ape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Ne
+ tscape Administration Services' )
+attributeTypes: ( 2.16.840.1.113730.3.1.80 NAME 'cirHost' DESC 'Netscape defin
+ ed attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape Di
+ rectory Server' )
+attributeTypes: ( 2.16.840.1.113730.3.1.2016 NAME 'nsMSNid' DESC 'Netscape def
+ ined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Netscape 
+ Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.42.2.27.4.1.11 NAME 'javaReferenceAddress' DESC 
+ 'Addresses associated with a JNDI Reference' EQUALITY caseExactMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2713' )
+attributeTypes: ( 2.16.840.1.113730.3.1.684 NAME 'nsds5ReplicaChangeCount' DES
+ C 'Netscape defined attribute type' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 1.3.1.1.4.1.453.16.2.103 NAME 'numSubordinates' DESC 'count 
+ of immediate subordinates' EQUALITY integerMatch ORDERING integerOrderingMatc
+ h SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE NO-USER-MODIFICATION USAG
+ E directoryOperation X-ORIGIN 'numSubordinates Internet Draft' )
+attributeTypes: ( 2.16.840.1.113730.3.1.9999999 NAME 'nsds5debugreplicatimeout
+ ' DESC 'Netscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE X-ORIGIN 'Netscape Directory Server' )
+attributeTypes: ( 1.3.6.1.4.1.1466.101.120.5 NAME 'namingContexts' DESC 'Stand
+ ard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'RFC 2
+ 252' )
+attributeTypes: ( 0.9.2342.19200300.100.1.40 NAME 'personalTitle' DESC 'Standa
+ rd LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 12
+ 74' )
+attributeTypes: ( 2.16.840.1.113730.3.1.226 NAME 'nsslapd-pluginType' DESC 'Ne
+ tscape defined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 
+ 'Netscape Directory Server' )
+attributeTypes: ( 2.5.4.44 NAME 'generationQualifier' DESC 'Standard LDAP attr
+ ibute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256'
+  )
+attributeTypes: ( 2.16.840.1.113730.3.1.612 NAME 'generation' DESC 'Netscape d
+ efined attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'Netscap
+ e Directory Server' )
+matchingRules: ( 2.5.13.27 NAME 'generalizedTimeMatch' DESC 'The rule evaluate
+ s to TRUE if and only if the attribute value represents the same universal co
+ ordinated time as the assertion value.' SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 
+ )
+matchingRules: ( 2.5.13.28 NAME 'generalizedTimeOrderingMatch' DESC 'The rule 
+ evaluates to TRUE if and only if the attribute value represents a universal c
+ oordinated time that is earlier than the universal coordinated time represent
+ ed by the assertion value.' SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
+matchingRules: ( 2.5.13.14 NAME 'integerMatch' DESC 'The rule evaluates to TRU
+ E if and only if the attribute value and the assertion value are the same int
+ eger value.' SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 )
+matchingRules: ( 2.5.13.15 NAME 'integerOrderingMatch' DESC 'The rule evaluate
+ s to TRUE if and only if the integer value of the attribute value is less tha
+ n the integer value of the assertion value.' SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.27 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.0.1 NAME 'caseIgnoreOrderingMatch-def
+ ault' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.0.1.6 NAME 'caseIgnoreSubstringMatch-
+ default' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.1.1 NAME 'caseIgnoreOrderingMatch-ar'
+  DESC 'ar' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.1.1.6 NAME 'caseIgnoreSubstringMatch-
+ ar' DESC 'ar' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.2.1 NAME 'caseIgnoreOrderingMatch-be'
+  DESC 'be' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.2.1.6 NAME 'caseIgnoreSubstringMatch-
+ be' DESC 'be' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.3.1 NAME 'caseIgnoreOrderingMatch-bg'
+  DESC 'bg' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.3.1.6 NAME 'caseIgnoreSubstringMatch-
+ bg' DESC 'bg' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.4.1 NAME 'caseIgnoreOrderingMatch-ca'
+  DESC 'ca' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.4.1.6 NAME 'caseIgnoreSubstringMatch-
+ ca' DESC 'ca' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.5.1 NAME 'caseIgnoreOrderingMatch-cs'
+  DESC 'cs' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.5.1.6 NAME 'caseIgnoreSubstringMatch-
+ cs' DESC 'cs' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.6.1 NAME 'caseIgnoreOrderingMatch-da'
+  DESC 'da' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.6.1.6 NAME 'caseIgnoreSubstringMatch-
+ da' DESC 'da' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.7.1 NAME 'caseIgnoreOrderingMatch-de'
+  DESC 'de' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.7.1.6 NAME 'caseIgnoreSubstringMatch-
+ de' DESC 'de' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.8.1 NAME 'caseIgnoreOrderingMatch-de-
+ AT' DESC 'de-AT' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.8.1.6 NAME 'caseIgnoreSubstringMatch-
+ de-AT' DESC 'de-AT' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.9.1 NAME 'caseIgnoreOrderingMatch-de-
+ CH' DESC 'de-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.9.1.6 NAME 'caseIgnoreSubstringMatch-
+ de-CH' DESC 'de-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.10.1 NAME 'caseIgnoreOrderingMatch-el
+ ' DESC 'el' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.10.1.6 NAME 'caseIgnoreSubstringMatch
+ -el' DESC 'el' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.11.1 NAME 'caseIgnoreOrderingMatch-en
+ ' DESC 'en' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.11.1.6 NAME 'caseIgnoreSubstringMatch
+ -en' DESC 'en' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.12.1 NAME 'caseIgnoreOrderingMatch-en
+ -CA' DESC 'en-CA' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.12.1.6 NAME 'caseIgnoreSubstringMatch
+ -en-CA' DESC 'en-CA' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.13.1 NAME 'caseIgnoreOrderingMatch-en
+ -GB' DESC 'en-GB' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.13.1.6 NAME 'caseIgnoreSubstringMatch
+ -en-GB' DESC 'en-GB' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.14.1 NAME 'caseIgnoreOrderingMatch-en
+ -IE' DESC 'en-IE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.14.1.6 NAME 'caseIgnoreSubstringMatch
+ -en-IE' DESC 'en-IE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.15.1 NAME 'caseIgnoreOrderingMatch-es
+ ' DESC 'es' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.15.1.6 NAME 'caseIgnoreSubstringMatch
+ -es' DESC 'es' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.16.1 NAME 'caseIgnoreOrderingMatch-et
+ ' DESC 'et' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.16.1.6 NAME 'caseIgnoreSubstringMatch
+ -et' DESC 'et' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.17.1 NAME 'caseIgnoreOrderingMatch-fi
+ ' DESC 'fi' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.17.1.6 NAME 'caseIgnoreSubstringMatch
+ -fi' DESC 'fi' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.18.1 NAME 'caseIgnoreOrderingMatch-fr
+ ' DESC 'fr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.18.1.6 NAME 'caseIgnoreSubstringMatch
+ -fr' DESC 'fr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.19.1 NAME 'caseIgnoreOrderingMatch-fr
+ -BE' DESC 'fr-BE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.19.1.6 NAME 'caseIgnoreSubstringMatch
+ -fr-BE' DESC 'fr-BE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.20.1 NAME 'caseIgnoreOrderingMatch-fr
+ -CA' DESC 'fr-CA' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.20.1.6 NAME 'caseIgnoreSubstringMatch
+ -fr-CA' DESC 'fr-CA' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.21.1 NAME 'caseIgnoreOrderingMatch-fr
+ -CH' DESC 'fr-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.21.1.6 NAME 'caseIgnoreSubstringMatch
+ -fr-CH' DESC 'fr-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.22.1 NAME 'caseIgnoreOrderingMatch-hr
+ ' DESC 'hr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.22.1.6 NAME 'caseIgnoreSubstringMatch
+ -hr' DESC 'hr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.23.1 NAME 'caseIgnoreOrderingMatch-hu
+ ' DESC 'hu' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.23.1.6 NAME 'caseIgnoreSubstringMatch
+ -hu' DESC 'hu' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.24.1 NAME 'caseIgnoreOrderingMatch-is
+ ' DESC 'is' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.24.1.6 NAME 'caseIgnoreSubstringMatch
+ -is' DESC 'is' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.25.1 NAME 'caseIgnoreOrderingMatch-it
+ ' DESC 'it' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.25.1.6 NAME 'caseIgnoreSubstringMatch
+ -it' DESC 'it' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.26.1 NAME 'caseIgnoreOrderingMatch-it
+ -CH' DESC 'it-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.26.1.6 NAME 'caseIgnoreSubstringMatch
+ -it-CH' DESC 'it-CH' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.27.1 NAME 'caseIgnoreOrderingMatch-iw
+ ' DESC 'iw' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.27.1.6 NAME 'caseIgnoreSubstringMatch
+ -iw' DESC 'iw' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.28.1 NAME 'caseIgnoreOrderingMatch-ja
+ ' DESC 'ja' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.28.1.6 NAME 'caseIgnoreSubstringMatch
+ -ja' DESC 'ja' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.29.1 NAME 'caseIgnoreOrderingMatch-ko
+ ' DESC 'ko' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.29.1.6 NAME 'caseIgnoreSubstringMatch
+ -ko' DESC 'ko' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.30.1 NAME 'caseIgnoreOrderingMatch-lt
+ ' DESC 'lt' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.30.1.6 NAME 'caseIgnoreSubstringMatch
+ -lt' DESC 'lt' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.31.1 NAME 'caseIgnoreOrderingMatch-lv
+ ' DESC 'lv' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.31.1.6 NAME 'caseIgnoreSubstringMatch
+ -lv' DESC 'lv' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.32.1 NAME 'caseIgnoreOrderingMatch-mk
+ ' DESC 'mk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.32.1.6 NAME 'caseIgnoreSubstringMatch
+ -mk' DESC 'mk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.33.1 NAME 'caseIgnoreOrderingMatch-nl
+ ' DESC 'nl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.33.1.6 NAME 'caseIgnoreSubstringMatch
+ -nl' DESC 'nl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.34.1 NAME 'caseIgnoreOrderingMatch-nl
+ -BE' DESC 'nl-BE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.34.1.6 NAME 'caseIgnoreSubstringMatch
+ -nl-BE' DESC 'nl-BE' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.35.1 NAME 'caseIgnoreOrderingMatch-no
+ ' DESC 'no' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.35.1.6 NAME 'caseIgnoreSubstringMatch
+ -no' DESC 'no' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.36.1 NAME 'caseIgnoreOrderingMatch-no
+ -NO-B' DESC 'no-NO' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.36.1.6 NAME 'caseIgnoreSubstringMatch
+ -no-NO-B' DESC 'no-NO' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.37.1 NAME 'caseIgnoreOrderingMatch-no
+ -NO-NY' DESC 'no-NO' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.37.1.6 NAME 'caseIgnoreSubstringMatch
+ -no-NO-NY' DESC 'no-NO' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.38.1 NAME 'caseIgnoreOrderingMatch-pl
+ ' DESC 'pl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.38.1.6 NAME 'caseIgnoreSubstringMatch
+ -pl' DESC 'pl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.39.1 NAME 'caseIgnoreOrderingMatch-ro
+ ' DESC 'ro' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.39.1.6 NAME 'caseIgnoreSubstringMatch
+ -ro' DESC 'ro' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.40.1 NAME 'caseIgnoreOrderingMatch-ru
+ ' DESC 'ru' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.40.1.6 NAME 'caseIgnoreSubstringMatch
+ -ru' DESC 'ru' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.41.1 NAME 'caseIgnoreOrderingMatch-sh
+ ' DESC 'sh' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.41.1.6 NAME 'caseIgnoreSubstringMatch
+ -sh' DESC 'sh' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.42.1 NAME 'caseIgnoreOrderingMatch-sk
+ ' DESC 'sk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.42.1.6 NAME 'caseIgnoreSubstringMatch
+ -sk' DESC 'sk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.43.1 NAME 'caseIgnoreOrderingMatch-sl
+ ' DESC 'sl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.43.1.6 NAME 'caseIgnoreSubstringMatch
+ -sl' DESC 'sl' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.44.1 NAME 'caseIgnoreOrderingMatch-sq
+ ' DESC 'sq' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.44.1.6 NAME 'caseIgnoreSubstringMatch
+ -sq' DESC 'sq' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.45.1 NAME 'caseIgnoreOrderingMatch-sr
+ ' DESC 'sr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.45.1.6 NAME 'caseIgnoreSubstringMatch
+ -sr' DESC 'sr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.46.1 NAME 'caseIgnoreOrderingMatch-sv
+ ' DESC 'sv' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.46.1.6 NAME 'caseIgnoreSubstringMatch
+ -sv' DESC 'sv' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.47.1 NAME 'caseIgnoreOrderingMatch-tr
+ ' DESC 'tr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.47.1.6 NAME 'caseIgnoreSubstringMatch
+ -tr' DESC 'tr' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.48.1 NAME 'caseIgnoreOrderingMatch-uk
+ ' DESC 'uk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.48.1.6 NAME 'caseIgnoreSubstringMatch
+ -uk' DESC 'uk' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.49.1 NAME 'caseIgnoreOrderingMatch-zh
+ ' DESC 'zh' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.49.1.6 NAME 'caseIgnoreSubstringMatch
+ -zh' DESC 'zh' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.50.1 NAME 'caseIgnoreOrderingMatch-zh
+ -TW' DESC 'zh-TW' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.50.1.6 NAME 'caseIgnoreSubstringMatch
+ -zh-TW' DESC 'zh-TW' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.0.3 SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.0.3.6 SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.11.3 NAME 'caseExactOrderingMatch-en'
+  DESC 'en' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+matchingRules: ( 2.16.840.1.113730.3.3.2.11.3.6 NAME 'caseExactSubstringMatch-
+ en' DESC 'en' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.5 DESC 'Binary' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.7 DESC 'Boolean' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.26 DESC 'IA5String' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.15 DESC 'DirectoryString' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.11 DESC 'Country String' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.12 DESC 'DN' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.24 DESC 'GeneralizedTime' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.27 DESC 'INTEGER' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.28 DESC 'JPEG' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.40 DESC 'OctetString' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.38 DESC 'OID' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.41 DESC 'Postal Address' )
+ldapSyntaxes: ( 2.16.840.1.113730.3.7.1 DESC 'SpaceInsensitiveString' )
+ldapSyntaxes: ( 1.3.6.1.4.1.1466.115.121.1.50 DESC 'TelephoneNumber' )
+ldapSyntaxes: ( 1.3.6.1.4.1.4401.1.1.1 DESC 'URI' )
+

@@ -1,0 +1,178 @@
+#!/usr/bin/env python
+# -*- Mode: Python; coding: iso-8859-1 -*-
+# vi:si:et:sw=4:sts=4:ts=4
+
+##
+## Copyright (C) 2009 Cleber Rodrigues <cleber.gnu@gmail.com>
+## All rights reserved
+##
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+## USA.
+##
+## Author(s): Cleber Rodrigues <cleber.gnu@gmail.com>
+##
+'''
+ldap-userman
+
+    Simple interface for managing users
+'''
+
+import os
+import sys
+import ldap
+
+from snack import *
+
+from ldapalchemy.engine import Engine
+from ldapalchemy.schema import Schema
+from ldapalchemy.template import Template, ObjectClass, AttributeType
+from ldapalchemy.config import PersistentConfig
+
+OK_CANCEL_BUTTONS = ["OK", "CANCEL", ]
+
+class App:
+
+    __title__ = 'User Manager'
+
+    def __init__(self):
+        self.screen = None
+
+        self.config = PersistentConfig()
+
+        self.ldap_engine = Engine(self.config.connection_uri,
+                                  binddn=self.config.connection_binddn,
+                                  bindpw=self.config.connection_bindpw)
+
+        self.ldap_schema = Schema(self.ldap_engine)
+        #self.ldap_schema = Schema(Engine('ldap://127.0.0.1:389')) # use local schema
+
+        self.ldap_user_template = Template('user', 
+                                           self.ldap_schema, 
+                                           ObjectClass('inetOrgPerson'),
+                                           AttributeType('uid', rdn=True))
+        self.ldap_result = None
+
+    def _dialog_main(self):
+        return ButtonChoiceWindow(self.screen,
+                                  self.__title__,
+                                  "This is the LDAPAlchemy User Manager. Please choose an action bellow:",
+                                  ["Add User", "Delete User", "Edit User", "Quit"],
+                                  width=60)
+
+    def _dialog_add_user(self):
+        return EntryWindow(self.screen,
+                           "%s: %s" % (self.__title__, "Add User"),
+                           "",
+                           ["User's Name:",
+                            "Login:", 
+                            "Password:",
+                            "E-Mail Address:"],
+                           buttons=OK_CANCEL_BUTTONS)
+
+    def _get_users(self):
+        '''
+        Returns a tupple of uids
+        '''
+        search = self.ldap_user_template.search()
+        self.ldap_result = search.execute(self.config.connection_basedn)
+        return [d[1]['uid'][0] for d in self.ldap_result]
+
+    def _dialog_select_user(self):
+        return ListboxChoiceWindow(self.screen,
+                                   "%s: %s" % (self.__title__, "Select a User"),
+                                   "",
+                                   self._get_users(),
+                                   OK_CANCEL_BUTTONS)
+
+    def select_user(self):
+        button, selection = self._dialog_select_user()
+        if button == "CANCEL".lower():
+            return None
+        else:
+            return selection
+
+    def _dialog_edit_user(self):
+        pass
+
+    def _dialog_delete_user(self):
+        selection = self.select_user()
+
+        if selection is not None:
+            user_dn, user_entry = self.ldap_result[selection]
+            uid = user_entry['uid'][0]
+            button = ButtonChoiceWindow(self.screen,
+                                        "%s: %s" % (self.__title__, "Confirm User Deletion"),
+                                        "Are you sure you want to delete user \"%s\" ?" % uid,
+                                        OK_CANCEL_BUTTONS)
+            if button == "OK".lower():
+                delete = self.ldap_user_template.delete()
+                delete.execute(self.config.connection_basedn, uid=uid)
+
+        self.quit()
+        
+    def quit(self, retcode=0):
+        self.screen.finish()
+        sys.exit(retcode)
+
+    def run(self):
+        '''
+        Application entry point
+        '''
+        self.screen = SnackScreen()
+        action = self._dialog_main()
+
+        if action == "Quit":
+            self.quit()
+
+        elif action == "Add User".lower():
+            button, entries = self._dialog_add_user()
+            from pprint import pformat
+            open('/tmp/t.txt', 'w').write(pformat(entries))
+            if button == "CANCEL".lower():
+                self.quit()
+
+            #
+            # do_add()
+            #
+            #try:
+            username, login, password, email = entries
+            add = self.ldap_user_template.add()
+            add.execute(self.config.connection_basedn,
+                        uid=login,
+                        cn=username,
+                        sn=username,
+                        userPassword="{CLEAR}%s" % password,
+                        mail=email)
+            #except:
+            #    ButtonChoiceWindow(self.screen,
+            #                       "Error",
+            #                       "Error adding entry for user %s\n%s" % \
+            #                           (username, error),
+            #                       ["OK", ])
+
+
+        elif action == "Delete User".lower():
+            self._dialog_delete_user()
+            self.quit()
+
+        elif action == "Edit User".lower():
+            self._dialog_select_user()
+            self.quit()
+
+        self.screen.finish()
+
+if __name__ == '__main__':
+    app = App()
+    app.run()

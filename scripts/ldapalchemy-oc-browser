@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+#
+# -*- Mode: Python; coding: iso-8859-1 -*-
+# vi:si:et:sw=4:sts=4:ts=4
+
+##
+## This file is part of LDAPAlchemy
+## Copyright (C) 2007 Cleber Rodrigues <cleber.gnu@gmail.com>
+## All rights reserved
+##
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+## USA.
+##
+## Author(s): Cleber Rodrigues <cleber.gnu@gmail.com>
+##
+
+import gtk
+
+from ldapalchemy.gui.logindialog import LdapLoginDlg
+from ldapalchemy.gui.objectclass import ObjectClassListWindow
+from ldapalchemy.schema import Schema
+
+class ObjectClassBrowser:
+    '''
+    Object Class Browser App
+    '''
+    def __init__(self):
+        self.login_dlg = LdapLoginDlg()
+        self.login_result = None
+
+    def __create_main_window(self):
+        self.main_window = gtk.Window()
+        self.main_window.set_title('ObjectClass Browser')
+        self.oc_list_view = ObjectClassListWindow(self.schema)
+
+        self.main_window.add(self.oc_list_view)
+
+        self.main_window.connect('delete_event',
+                                 self.__delete_event_cb)
+
+    def __delete_event_cb(self, widget=None, data=None):
+        gtk.main_quit()
+        return False
+
+    def run(self):
+        self.login_result = self.login_dlg.run()
+
+        if self.login_result == gtk.RESPONSE_ACCEPT:
+            self.schema = Schema(self.login_dlg.engine)
+
+            self.__create_main_window()
+            self.main_window.show_all()
+            gtk.main()
+
+if __name__ == '__main__':
+
+    app = ObjectClassBrowser()
+    app.run()
